@@ -1,0 +1,38 @@
+name: Validate
+
+on:
+  pull_request:
+    paths:
+      - 'primitives/**'
+      - 'domain/**'
+      - 'features/**'
+      - 'compositions/**'
+      - 'templates/**'
+      - 'scripts/**'
+      - 'INDEX.md'
+
+jobs:
+  typecheck:
+    name: TypeScript Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Install dependencies and typecheck
+        run: |
+          bun install
+          bun run typecheck
+
+  index-check:
+    name: Knowledge Index Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Verify INDEX.md is up to date
+        run: |
+          node scripts/update-index.js --check

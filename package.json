@@ -1,0 +1,20 @@
+{
+  "name": "quiv-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "knowledge"
+  ],
+  "scripts": {
+    "build": "bun run --cwd packages/cli build",
+    "test": "bun test packages/cli",
+    "typecheck": "bun run --cwd knowledge typecheck && bun run --cwd packages/cli typecheck",
+    "check-index": "node knowledge/scripts/update-index.js --check",
+    "update-index": "node knowledge/scripts/update-index.js"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.7.3"
+  }
+}

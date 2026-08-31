@@ -1,0 +1,28 @@
+{
+  "name": "@quiv-knowledge/cli",
+  "version": "1.0.0",
+  "type": "module",
+  "bin": {
+    "quiv": "./dist/index.js",
+    "qv": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "bun build ./src/index.ts --target node --outdir ./dist --banner '#!/usr/bin/env node' && bun x tsc --emitDeclarationOnly --outDir ./dist && chmod +x ./dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "gray-matter": "^4.0.3",
+    "simple-git": "^3.27.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^22.13.1",
+    "tsup": "^8.4.0",
+    "typescript": "^5.7.3"
+  }
+}
