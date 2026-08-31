@@ -1,107 +1,61 @@
 <p align="center">
-  <img src="assets/hero-visual.svg" alt="{{PROJECT_NAME}} — {{TAGLINE}}" width="100%">
+  <img src="assets/hero.svg" alt="{{PROJECT_NAME}} — Stop letting AI agents write complex architecture from scratch" width="100%">
 </p>
 
 <p align="center">
-  <a href="https://github.com/{{ORG}}/{{REPO}}/releases"><img src="https://img.shields.io/badge/version-v1.0.0-3b82f6?style=flat-square" alt="Version"></a>
-  <a href="https://github.com/{{ORG}}/{{REPO}}/actions"><img src="https://img.shields.io/badge/build-passing-22c55e?style=flat-square" alt="Build Status"></a>
-  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="MIT License"></a>
+  <a href="https://github.com/{{ORG}}/{{REPO}}/releases"><img src="https://img.shields.io/badge/version-v1.0.0-3b82f6?style=flat-square" alt="version"></a>
+  <a href="https://github.com/{{ORG}}/{{REPO}}/actions"><img src="https://img.shields.io/badge/build-passing-22c55e?style=flat-square" alt="CI"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="MIT"></a>
 </p>
 
 # {{PROJECT_NAME}}
 
-**{{ONE_LINER_HOOK}}**
+### **Stop letting your AI agent write complex architecture from scratch.**
 
-{{PROBLEM_PARAGRAPH}}
+When you ask Claude Code, Cursor, or Copilot to build complex features from zero, it guesses. It invents half-baked schemas, misses edge cases, and repeats mistakes others spent weeks debugging.
 
-`{{PROJECT_NAME}}` is a {{CATEGORY_DESCRIPTION}} — {{MECHANISM_DESCRIPTION}}.
+**`{{PROJECT_NAME}}` is like `shadcn/ui` for full-stack architecture.**
 
-> 🤖 **Machine Entry Point**: If you are an AI agent, index [`llms.txt`](llms.txt) for API specifications and [`INDEX.md`](INDEX.md) for the active catalog.
-
----
-
-<p align="center">
-  <img src="assets/before-after.svg" alt="Without vs With {{PROJECT_NAME}}" width="100%">
-</p>
+Instead of letting your agent hallucinate complex domain plumbing, `{{PROJECT_NAME}}` gives your AI instant access to battle-tested, drop-in capability slices with all invariants, edge cases, and types already solved.
 
 ---
 
-## Quickstart
-
-Query the registry directly with Bun (no global install required):
-
-```bash
-bunx {{CLI_NAME}} find "{{SEARCH_QUERY}}"
-```
+## ⚡ The Pain vs. The Magic
 
 ```text
-✔ Found 3 patterns (140 tokens | 11ms)
-  • {{PATTERN_PATH}}    [PROVEN]    240 tok  — {{PATTERN_SUMMARY}}
+❌ WITHOUT {{PROJECT_NAME}} (The 3-Hour Prompt Loop)
+You: "Claude, implement {{FEATURE_EXAMPLE}}."
+→ Agent generates hundreds of lines of unverified code.
+→ Misses platform edge cases and limits.
+→ You spend the entire afternoon debugging Claude's architecture mistakes.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ WITH {{PROJECT_NAME}} (The 30-Second Reality)
+You: "Claude, add {{FEATURE_EXAMPLE}} using {{CLI_NAME}}."
+→ Agent runs: bunx {{CLI_NAME}} use {{SAMPLE_PATTERN}} --project app
+→ Drops in proven, verified modules and strict TypeScript contracts.
+→ Agent simply connects the pre-built hooks to your UI in seconds.
 ```
 
-Inspect only the type contract and rules:
+---
+
+## 🚀 How It Works in 30 Seconds
 
 ```bash
-bunx {{CLI_NAME}} read {{PATTERN_PATH}} --level overview
-```
+# 1. Search for a capability
+bunx {{CLI_NAME}} find "{{SEARCH_QUERY}}"
 
-Scaffold into your target project:
+# 2. Inspect the contract
+bunx {{CLI_NAME}} read {{SAMPLE_PATTERN}} --level overview
 
-```bash
-bunx {{CLI_NAME}} use {{PATTERN_PATH}} --project my-app
-```
-
----
-
-## The Pattern Artifact
-
-```yaml
----
-name: {{PATTERN_PATH}}
-tier: features
-status: PROVEN
-tokens: 240
----
-
-# Contract: {{CONTRACT_NAME}}
-interface {{CONTRACT_NAME}} {
-  // strict types
-}
-
-# Rules
-- Invariant: Key architectural invariant
-- Constraint: Runtime or thread boundary constraint
+# 3. Drop into your project
+bunx {{CLI_NAME}} use {{SAMPLE_PATTERN}} --project my-app
 ```
 
 ---
 
-## Architecture & Tiers
-
-<p align="center">
-  <img src="assets/tiers.svg" alt="Architecture Tiers" width="100%">
-</p>
-
-| Tier | Directory | Purpose | Typical Tokens |
-| :--- | :--- | :--- | :---: |
-| **T1: Primitives** | `primitives/` | Atomic building blocks, pure utilities, hooks | 100–300 |
-| **T2: Domain** | `domain/` | Business rules, calculations, schemas | 200–500 |
-| **T3: Features** | `features/` | Complete encapsulated feature slices | 300–800 |
-| **T4: Compositions** | `compositions/` | Blueprints assembling multiple tiers into app shells | 500–1,200 |
-| **T5: Templates** | `templates/` | Full-stack production starter scaffolds | Full repo |
-
----
-
-## Verifiable Benchmarks
-
-| Task | Raw Source Loading | `{{PROJECT_NAME}}` Contract Read | Difference |
-| :--- | :---: | :---: | :---: |
-| **Search & Discovery** | 1,800 tokens | **140 tokens** | **92% less context** |
-| **Architecture Contract Ingestion** | 8,200 tokens | **240 tokens** | **97% less context** |
-| **Scaffolding Latency** | Manual copy-paste | **< 14ms** | **Instant** |
-
----
-
-## Agent Setup
+## 🤖 Equip Your AI Agent
 
 ```bash
 bunx {{CLI_NAME}} init --agents
@@ -109,24 +63,46 @@ bunx {{CLI_NAME}} init --agents
 
 ---
 
-## Lore-lite Commit Standard
+## 🏛️ What's in the Catalog (The 5 Tiers)
+
+<p align="center">
+  <img src="assets/tiers.svg" alt="5 capability tiers" width="100%">
+</p>
+
+| Tier | What it gives your AI |
+| :--- | :--- |
+| **`primitives/`** | Atomic hooks, pure utilities, math engines |
+| **`domain/`** | Business rules, calculation algorithms, schemas |
+| **`features/`** | Complete, turnkey feature modules |
+| **`compositions/`** | Whole-app UI guidelines & layout blueprints |
+| **`templates/`** | Full-stack production starter repos |
+
+---
+
+## 📋 Lore-lite: Code That Remembers Why
 
 ```git
 feat(scope): title
 
-Constraint: Invariant that must not be broken
+Constraint: Must not break runtime boundary
 Rejected: Alternative evaluated | Why it failed
-Evidence: Empirical validation / deployment details
+Evidence: Empirical validation / test verification
 ```
 
 ---
 
-## Contributing
+## 🛠️ CLI Quick Reference
 
-Contributions and pattern submissions are welcome. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for details.
+| Command | What it does |
+| :--- | :--- |
+| `bunx {{CLI_NAME}} find "<query>"` | Find ready-to-use patterns by problem name |
+| `bunx {{CLI_NAME}} read <pattern>` | View types, constraints, and contracts |
+| `bunx {{CLI_NAME}} use <pattern>` | Scaffold pattern and dependencies directly into your codebase |
+| `bunx {{CLI_NAME}} list` | Browse all available patterns across tiers |
+| `bunx {{CLI_NAME}} init --agents` | Configure Claude Code, Cursor, and Copilot |
 
 ---
 
-## License
+## 📄 License
 
 Distributed under the MIT License. See [`LICENSE`](LICENSE) for details.
