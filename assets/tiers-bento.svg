@@ -1,0 +1,100 @@
+<svg width="1200" height="480" viewBox="0 0 1200 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bento_bg" x1="0" y1="0" x2="1200" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#080B11"/>
+      <stop offset="100%" stop-color="#040609"/>
+    </linearGradient>
+    <linearGradient id="cyan_tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0E2439"/>
+      <stop offset="100%" stop-color="#07121F"/>
+    </linearGradient>
+    <linearGradient id="purple_tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#21153B"/>
+      <stop offset="100%" stop-color="#100A1F"/>
+    </linearGradient>
+    <linearGradient id="emerald_tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B2B20"/>
+      <stop offset="100%" stop-color="#051711"/>
+    </linearGradient>
+    <linearGradient id="amber_tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2D1F0E"/>
+      <stop offset="100%" stop-color="#140E06"/>
+    </linearGradient>
+    <linearGradient id="blue_tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#131E3D"/>
+      <stop offset="100%" stop-color="#090E1F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Base Canvas -->
+  <rect width="1200" height="480" rx="20" fill="url(#bento_bg)"/>
+  <rect x="1" y="1" width="1198" height="478" rx="19" stroke="#1E293B" stroke-width="2"/>
+
+  <!-- Section Header -->
+  <g transform="translate(50, 40)">
+    <text x="0" y="0" fill="#00F0FF" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" letter-spacing="0.1em">THE 5 CAPABILITY TIERS</text>
+    <text x="0" y="28" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="24" font-weight="800" letter-spacing="-0.02em">Hierarchical Architecture Built for AI Context Limits</text>
+  </g>
+
+  <!-- BENTO GRID -->
+
+  <!-- TIER 1: PRIMITIVES (Top Left, Large) -->
+  <g transform="translate(50, 95)">
+    <rect width="350" height="165" rx="16" fill="url(#cyan_tile)" stroke="#00F0FF" stroke-opacity="0.3" stroke-width="1.5"/>
+    <rect x="20" y="18" width="80" height="24" rx="12" fill="#00F0FF" fill-opacity="0.15"/>
+    <text x="60" y="34" text-anchor="middle" fill="#00F0FF" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">TIER 01</text>
+    <text x="260" y="34" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="11">~200 tok</text>
+
+    <text x="20" y="72" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="18" font-weight="800">Primitives</text>
+    <text x="20" y="96" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="13">WHAT you build with: Atomic hooks, utils, and headless UI contracts.</text>
+    <text x="20" y="135" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="12">useOfflineEntity • conflictResolution</text>
+  </g>
+
+  <!-- TIER 2: DOMAIN (Top Middle) -->
+  <g transform="translate(425, 95)">
+    <rect width="350" height="165" rx="16" fill="url(#amber_tile)" stroke="#F59E0B" stroke-opacity="0.3" stroke-width="1.5"/>
+    <rect x="20" y="18" width="80" height="24" rx="12" fill="#F59E0B" fill-opacity="0.15"/>
+    <text x="60" y="34" text-anchor="middle" fill="#FBBF24" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">TIER 02</text>
+    <text x="260" y="34" fill="#FBBF24" font-family="'JetBrains Mono', monospace" font-size="11">~400 tok</text>
+
+    <text x="20" y="72" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="18" font-weight="800">Domain Logic</text>
+    <text x="20" y="96" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="13">BUSINESS knowledge: Calculation rules, ERP formulas, and strict data schemas.</text>
+    <text x="20" y="135" fill="#FBBF24" font-family="'JetBrains Mono', monospace" font-size="12">pricing-engine • tax-matrix • schemas</text>
+  </g>
+
+  <!-- TIER 3: FEATURES (Top Right) -->
+  <g transform="translate(800, 95)">
+    <rect width="350" height="165" rx="16" fill="url(#emerald_tile)" stroke="#10B981" stroke-opacity="0.3" stroke-width="1.5"/>
+    <rect x="20" y="18" width="80" height="24" rx="12" fill="#10B981" fill-opacity="0.15"/>
+    <text x="60" y="34" text-anchor="middle" fill="#34D399" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">TIER 03</text>
+    <text x="260" y="34" fill="#34D399" font-family="'JetBrains Mono', monospace" font-size="11">~600 tok</text>
+
+    <text x="20" y="72" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="18" font-weight="800">Features</text>
+    <text x="20" y="96" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="13">COMPLETE encapsulated units: Offline sync queues, auth flows &amp; retry workers.</text>
+    <text x="20" y="135" fill="#34D399" font-family="'JetBrains Mono', monospace" font-size="12">offline-sync • intent-install-prompt</text>
+  </g>
+
+  <!-- TIER 4: COMPOSITIONS (Bottom Left, Wide) -->
+  <g transform="translate(50, 280)">
+    <rect width="535" height="165" rx="16" fill="url(#purple_tile)" stroke="#A855F7" stroke-opacity="0.3" stroke-width="1.5"/>
+    <rect x="20" y="18" width="80" height="24" rx="12" fill="#A855F7" fill-opacity="0.15"/>
+    <text x="60" y="34" text-anchor="middle" fill="#C084FC" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">TIER 04</text>
+    <text x="445" y="34" fill="#C084FC" font-family="'JetBrains Mono', monospace" font-size="11">~800 tok</text>
+
+    <text x="20" y="72" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="18" font-weight="800">Compositions</text>
+    <text x="20" y="96" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="13">HOW to assemble for target application types: Apple HIG PWA shell, motion orchestration &amp; feedback loops.</text>
+    <text x="20" y="135" fill="#C084FC" font-family="'JetBrains Mono', monospace" font-size="12">apple-native-pwa • motion-patterns • launch-week</text>
+  </g>
+
+  <!-- TIER 5: TEMPLATES (Bottom Right, Wide) -->
+  <g transform="translate(615, 280)">
+    <rect width="535" height="165" rx="16" fill="url(#blue_tile)" stroke="#3B82F6" stroke-opacity="0.3" stroke-width="1.5"/>
+    <rect x="20" y="18" width="80" height="24" rx="12" fill="#3B82F6" fill-opacity="0.15"/>
+    <text x="60" y="34" text-anchor="middle" fill="#60A5FA" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">TIER 05</text>
+    <text x="430" y="34" fill="#60A5FA" font-family="'JetBrains Mono', monospace" font-size="11">Full Scaffold</text>
+
+    <text x="20" y="72" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="18" font-weight="800">Templates</text>
+    <text x="20" y="96" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="13">FULL starter scaffolds: Complete turnkey monorepo scaffolds ready for AI agent autonomous buildouts.</text>
+    <text x="20" y="135" fill="#60A5FA" font-family="'JetBrains Mono', monospace" font-size="12">high-star-oss-repo • nextjs-pwa • vite-pwa</text>
+  </g>
+</svg>

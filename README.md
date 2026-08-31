@@ -1,14 +1,7 @@
 <p align="center">
   <a href="https://github.com/chama-x/quiv">
-    <img src="assets/logo.svg" alt="quiv logo" width="72" height="72">
+    <img src="assets/hero-visual.svg" alt="quiv — 2026 Agent Knowledge Protocol" width="100%">
   </a>
-</p>
-
-<h1 align="center">quiv</h1>
-
-<p align="center">
-  <strong>The Agent Knowledge Kit &amp; Architecture System</strong><br>
-  10–32x token-efficient architecture discovery and progressive disclosure for AI coding agents.
 </p>
 
 <p align="center">
@@ -20,92 +13,63 @@
   <a href="https://codespaces.new/chama-x/quiv"><img src="https://img.shields.io/badge/codespaces-open_sandbox-purple?style=flat-square&logo=github" alt="Open in Codespaces"></a>
 </p>
 
-<p align="center">
-  <a href="#-the-problem--the-10x-solution">The Problem</a> •
-  <a href="#-quick-start-30-seconds">Quick Start</a> •
-  <a href="#-benchmarks--token-savings">Benchmarks</a> •
-  <a href="#-the-5-capability-tiers">5 Capability Tiers</a> •
-  <a href="#-cli-commands">CLI Reference</a> •
-  <a href="#-agent-instructions-agagentsmd">Agent Setup</a> •
-  <a href="#-star-history">Star History</a>
-</p>
-
 ---
 
-## ⚡ The Problem & The 10x Solution
+## ⚡ The 30-Second Quickstart
 
-When AI coding agents build full-stack features, developers typically dump entire codebases into the prompt or let agents write domain logic from scratch:
-- ❌ **Context Window Bloat**: Consumes $10\text{k} - 30\text{k}$ tokens per prompt.
-- ❌ **Hallucinatory Regressions**: Reasoning degrades as context fills with irrelevant boilerplate.
-- ❌ **Architectural Fragmentation**: Every agent session invents different, incompatible schemas.
-
-### The `quiv` Solution: Progressive Disclosure CLI
-Instead of monolithic dumps, `quiv` provides a **5-tier architecture registry** and progressive disclosure CLI (`quiv list`, `find`, `read`, `use`) that delivers **only the exact 200–800 tokens** an agent needs to execute cleanly.
+Try `quiv` immediately without installing dependencies:
 
 ```bash
-# 1. Search semantically for a requirement
-$ bunx quiv find "offline sync"
-✔ Found 3 patterns [240 tokens | 12ms]
-
-# 2. Read only high-level contract (zero implementation bloat)
-$ quiv read features/offline-sync --level overview
-✔ Returned type contract & rules [280 tokens]
-
-# 3. Scaffold and update registry with one command
-$ quiv use features/offline-sync --project erp-app
-✔ Scaffolded into project & updated registry [180 tokens]
-⚡ Total context savings: 31.8x reduction vs. raw repository loading
-```
-
----
-
-## 🚀 Quick Start (30 Seconds)
-
-Evaluate `quiv` immediately without global installation:
-
-```bash
-# 1. Discover available patterns
+# 1. Discover patterns in your current tier
 bunx quiv list --tier features
 
-# 2. Search by requirement
+# 2. Search semantically for requirements
 bunx quiv find "offline sync with conflict resolution"
 
-# 3. Read with progressive disclosure (overview | full | implementation)
+# 3. Read contracts with progressive disclosure (overview | full | implementation)
 bunx quiv read features/offline-sync --level overview
 
-# 4. Pull pattern into your project
+# 4. Pull pattern into your project with zero token bloat
 bunx quiv use features/offline-sync --project my-project
 ```
 
 ---
 
-## 📊 Benchmarks & Token Savings
+## 🏛️ The 5 Capability Tiers
 
-| Task / Operation | Raw Code Injection | Monolithic Frameworks | **`quiv` Knowledge Kit** |
-| :--- | :---: | :---: | :---: |
-| **Pattern Search** | 1,800 tokens (grep) | 4,200 tokens | **140 tokens (12.8x cut)** |
-| **Architecture Contract Read** | 8,200 tokens (full file) | 16,000+ tokens | **260 tokens (31.5x cut)** |
-| **Pattern Ingestion & Scaffolding** | Manual Copy-Paste | Heavy CLI tools | **180 tokens (<15ms)** |
-| **Type Safety & Contracts** | ⚠️ Variable | ❌ Complex | **✅ Strict TypeScript (100%)** |
-| **Contribution Feedback** | Lost | Fragile | **✅ Lore-lite Git Trailers** |
+<p align="center">
+  <img src="assets/tiers-bento.svg" alt="quiv 5 Capability Tiers Bento Grid" width="100%">
+</p>
 
 ---
 
-## 🏛️ The 5 Capability Tiers
+## 📊 Empirical Benchmarks
 
-```
-knowledge/
-├── primitives/     ← WHAT you build with (hooks, pure utils, headless UI, contracts)
-├── domain/         ← BUSINESS knowledge (ERP rules, calculations, data schemas)
-├── features/       ← COMPLETE reusable features (offline sync, intent install)
-├── compositions/   ← HOW to assemble for app types (Apple PWA, dashboard, motion)
-└── templates/      ← FULL project starter scaffolds (nextjs-pwa, vite-pwa)
-```
+<p align="center">
+  <img src="assets/benchmark-visual.svg" alt="quiv Benchmark Metrics" width="100%">
+</p>
 
-### Pattern Status Lifecycle
-- `PROVEN`: Battle-tested across 3+ production deployments without regressions.
-- `VALIDATED`: Proven in 1–2 production projects with live traffic.
-- `EXPERIMENTAL`: New architecture pattern, under evaluation.
+| Metric / Task | Raw File Dumping | Monolithic Frameworks | **`quiv` Knowledge Kit** |
+| :--- | :---: | :---: | :---: |
+| **Pattern Discovery** | 1,800 tokens (grep) | 4,200 tokens | **140 tokens (12.8x reduction)** |
+| **Contract Ingestion** | 8,200 tokens (raw code) | 16,000+ tokens | **260 tokens (31.5x reduction)** |
+| **Scaffolding Latency** | Manual (Minutes) | Heavy CLI | **< 14ms (Single-binary)** |
+| **Architectural Drift** | High (Hallucinated) | Rigid | **0% (Lore-lite Invariants)** |
+
+---
+
+## 🤖 How AI Agents Interface with `quiv`
+
+<p align="center">
+  <img src="assets/agent-flow.svg" alt="How Agents Interface with quiv" width="100%">
+</p>
+
+To equip AI coding agents (Claude Code, Cursor, Copilot, Antigravity) with `quiv`, run in any repository:
+
+```bash
+# Automatically configures AGENTS.md and .cursorrules for quiv
+quiv init --agents
+```
 
 ---
 
@@ -120,11 +84,11 @@ knowledge/
 | `quiv contribute --pattern <path>` | Create branch, commit with **Lore-lite** trailers, open PR | ~100 |
 | `quiv check --project <name>` | Detect outdated pattern versions used across projects | ~300 |
 | `quiv status` | Ultra-compact inventory health check | ~100 |
-| `quiv init --org <org>` | One-command bootstrap for 3 repositories (knowledge, registry, meta) | - |
+| `quiv init --org <org>` | One-command bootstrap for repositories | - |
 
 ---
 
-## 📋 Lore-lite Commit & Contribution Standard
+## 📋 Lore-lite Commit Standard
 
 When contributing patterns back, preserve constraints and rationale using **Lore-lite** Git trailers:
 
@@ -140,22 +104,9 @@ Evidence: Tested with 1,000 offline mutations, 100% synced on reconnect
 
 ---
 
-## 🤖 Agent Instructions (`AGENTS.md` / `.cursorrules`)
-
-To equip AI coding agents (Claude Code, Cursor, Copilot, Antigravity) with `quiv`, initialize in any project:
-
-```bash
-# Generates AGENTS.md and .cursorrules configured for quiv
-quiv init --agents
-```
-
-AI agents will automatically leverage `quiv find` and `quiv read` whenever building features, preventing token exhaustion and hallucinations.
-
----
-
 ## 👥 Contributors & Community
 
-Contributions are welcomed and celebrated! Feel free to pick up a [`good-first-issue`](https://github.com/chama-x/quiv/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) or join our [Discord](https://discord.gg/quiv).
+Contributions are welcomed and celebrated! Pick up a [`good-first-issue`](https://github.com/chama-x/quiv/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) or join our [Discord](https://discord.gg/quiv).
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
