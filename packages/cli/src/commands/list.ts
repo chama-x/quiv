@@ -11,9 +11,14 @@ export const listCommand = new Command('list')
   .option('-c, --capability <capability>', 'Filter by capability (e.g. offline-sync)')
   .option('-t, --tier <tier>', 'Filter by tier (primitives, domain, features, compositions, templates)')
   .option('-f, --format <format>', 'Output format (compact, table, json)', 'compact')
+  .option('--json', 'Output machine-readable JSON', false)
   .option('-p, --path <path>', 'Explicit path to knowledge repository')
-  .action((options) => {
-    const config = loadConfig(options.path);
+  .action((options, cmd) => {
+    const globalOpts = cmd?.parent?.opts() || {};
+    const knowledgePathOpt = options.path || globalOpts.path;
+    const formatOpt = options.json || globalOpts.json ? 'json' : (options.format || globalOpts.format || 'compact');
+
+    const config = loadConfig(knowledgePathOpt);
 
     if (!config.knowledgePath) {
       console.error(
@@ -51,6 +56,7 @@ export const listCommand = new Command('list')
       );
     }
 
-    const output = formatPatternList(patterns, options.format as OutputFormat);
+    const output = formatPatternList(patterns, formatOpt as OutputFormat);
     console.log(output);
   });
+

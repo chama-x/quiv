@@ -52,6 +52,11 @@
 - Resolves dependencies declared in frontmatter (`depends_on`).
 - Scaffolds code into the target project and records the dependency in `registry/projects.json`.
 
+### `quiv learn` (or `quiv extract`)
+- Flags: `--from <paths...>`, `--tier <tier>`, `--name <slug>`, `-m <message>`, `-c <constraints>`, `-r <rejected>`, `-e <evidence>`, `--tags <tags>`, `--dry-run`, `--no-pr`, `--json`
+- Harvests and packages newly implemented components from a project codebase into the target knowledge tier.
+- Auto-generates validated YAML frontmatter and Lore-lite commit trailers.
+
 ### `quiv contribute --pattern <path>`
 - Verifies pattern structure and runs tests.
 - Creates a git branch and prompts for Lore-lite trailers.

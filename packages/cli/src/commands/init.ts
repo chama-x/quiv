@@ -9,11 +9,15 @@ import chalk from 'chalk';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+import os from 'node:os';
+
 export const initCommand = new Command('init')
   .description('Initialize knowledge, registry, and meta repo structures')
   .option('-o, --org <org-name>', 'GitHub Organization name', 'quiv-knowledge')
   .option('-d, --dir <directory>', 'Root directory to scaffold repos into', process.cwd())
   .option('--create-remote', 'Create GitHub repositories in organization and push initial commits')
+  .option('--agents', 'Scaffold AGENTS.md, Cursor rules, and AI agent configuration', false)
+  .option('--antigravity', 'Install native Antigravity skill and rules globally (~/.gemini/config/)', false)
   .action(async (options) => {
     const rootDir = path.resolve(options.dir);
     const org = options.org;
@@ -55,7 +59,36 @@ export const initCommand = new Command('init')
     );
     console.log(chalk.green(`✓ Saved configuration to: ${savedRc}`));
 
-    // 3. Remote creation and initial push if requested
+    // Save global config for zero-config discovery anywhere
+    try {
+      const globalConfigDir = path.join(os.homedir(), '.config', 'quiv');
+      if (!fs.existsSync(globalConfigDir)) {
+        fs.mkdirSync(globalConfigDir, { recursive: true });
+      }
+      fs.writeFileSync(
+        path.join(globalConfigDir, 'config.json'),
+        JSON.stringify(
+          {
+            org,
+            knowledgePath: knowledgeDir,
+            registryPath: registryDir,
+            metaPath: metaDir,
+          },
+          null,
+          2
+        ) + '\n'
+      );
+      console.log(chalk.green(`✓ Registered global fallback config in ~/.config/quiv/config.json`));
+    } catch {
+      // ignore
+    }
+
+    // 3. Install agent rules / Antigravity skills
+    if (options.agents || options.antigravity) {
+      setupAgentFiles(rootDir, knowledgeDir);
+    }
+
+    // 4. Remote creation and initial push if requested
     if (options.createRemote) {
       if (!isGhInstalled()) {
         console.log(
@@ -108,6 +141,100 @@ export const initCommand = new Command('init')
     console.log(`  quiv status   - view knowledge base status`);
     console.log(`  quiv find     - search for patterns`);
   });
+
+function setupAgentFiles(rootDir: string, knowledgeDir: string): void {
+  // AGENTS.md in root
+  const agentsMdContent = `# Agent Knowledge Protocol (quiv)
+
+Quiv gives AI agents instant access to validated architectural patterns, UI shells, OLED tokens, motion systems, and offline sync building blocks without re-inventing solutions from scratch.
+
+## Day-to-Day Conversational Workflow
+1. **Start by Searching & Using**:
+   - Run \`quiv find "<problem description>"\` or \`quiv list\` to check if a validated/proven pattern exists.
+   - Run \`quiv read <pattern> --level overview\` (or \`full\`) to retrieve constraints, rejected alternatives, and verified designs (<300t budget).
+   - Run \`quiv use <pattern> --project <name> --dest ./src\` to copy implementation and resolve recursive dependencies into the workspace.
+2. **Build Unique Product Logic**:
+   - Write custom code only for what no pattern covers.
+3. **Finish by Learning & Distilling**:
+   - When completing features, UI assemblies, or custom hooks, extract and upstream them into QUIV:
+     \`quiv learn --from ./src/components/<Name>.tsx --tier compositions --name <slug> -m "feat: description" -c "constraints" -r "rejected" -e "evidence"\`
+   - Or run \`quiv contribute\` with Lore-lite commit trailers.
+`;
+  fs.writeFileSync(path.join(rootDir, 'AGENTS.md'), agentsMdContent, 'utf-8');
+  console.log(chalk.green(`✓ Wrote AGENTS.md`));
+
+  // .cursor/rules/quiv.mdc
+  const cursorDir = path.join(rootDir, '.cursor', 'rules');
+  if (!fs.existsSync(cursorDir)) fs.mkdirSync(cursorDir, { recursive: true });
+  fs.writeFileSync(
+    path.join(cursorDir, 'quiv.mdc'),
+    `---
+description: Quiv Architecture Knowledge System (Agent Protocol)
+globs: *
+alwaysApply: true
+---
+${agentsMdContent}`,
+    'utf-8'
+  );
+  console.log(chalk.green(`✓ Wrote .cursor/rules/quiv.mdc`));
+
+  // Global Antigravity skill in ~/.gemini/config/skills/quiv/
+  try {
+    const agySkillDir = path.join(os.homedir(), '.gemini', 'config', 'skills', 'quiv');
+    if (!fs.existsSync(agySkillDir)) fs.mkdirSync(agySkillDir, { recursive: true });
+    const agySkillContent = `---
+name: quiv
+description: >-
+  Agent Knowledge Kit (quiv/qv) for discovering, retrieving, and scaffolding validated architectural patterns,
+  UI shells, OLED tokens, motion systems, and offline sync building blocks without re-inventing solutions from scratch.
+  MUST USE whenever asked to build, design, or scaffold PWA shells, Apple-grade UI, OLED dark tokens, motion/springs,
+  offline sync features, or to learn and extract reusable components at the end of a project.
+---
+
+# Quiv Agent Knowledge System (quiv/qv)
+
+## Overview
+Quiv gives AI agents instant access to validated, proven architectural patterns across 5 tiers:
+1. **Primitives**: Pure building blocks (hooks, utils, tabular numerals, haptics, spring vocabulary)
+2. **Domain**: Business & domain models
+3. **Features**: Turnkey capabilities (offline-sync, intent install prompts, zero-CLS banners)
+4. **Compositions**: Assembly recipes (Apple-native PWA shell, storefront shells, OLED glass tokens, motion patterns)
+5. **Templates**: Scaffold starters (high-star OSS repos, Next.js PWA)
+
+## Zero-Token Workflow Loop
+
+### 1. Find Pattern
+\`\`\`bash
+quiv find "<problem or component keyword>"
+\`\`\`
+*Examples:* \`quiv find "storefront"\`, \`quiv find "oled tokens"\`, \`quiv find "spring motion"\`, \`quiv find "offline sync"\`
+
+### 2. Read Constraints & Solutions (<300t overview)
+\`\`\`bash
+quiv read <pattern-path> --level overview
+\`\`\`
+*Note:* Reads token-optimized summary including hard constraints and rejected alternatives. Use \`--level full\` or \`--level implementation\` only if code details are needed.
+
+### 3. Scaffold into Workspace
+\`\`\`bash
+quiv use <pattern-path> --dest ./src --project <project-name>
+\`\`\`
+*Note:* Automatically copies the pattern files and all recursive dependencies into your workspace.
+
+### 4. Post-Project Learn & Extract (Harvesting Knowledge)
+When the user asks to learn, extract, or contribute reusable components built during the project:
+\`\`\`bash
+quiv learn --from ./src/path/to/Component.tsx --tier <tier> --name <slug> -m "feat: description" -c "<constraints>" -r "<rejected>" -e "<evidence>"
+\`\`\`
+*Note:* Automatically packages the component, creates the validated frontmatter README, commits with Lore-lite trailers, and records it into the knowledge base.
+`;
+    fs.writeFileSync(path.join(agySkillDir, 'SKILL.md'), agySkillContent, 'utf-8');
+    console.log(chalk.green(`✓ Installed Antigravity skill: ~/.gemini/config/skills/quiv/SKILL.md`));
+  } catch {
+    // ignore
+  }
+}
+
 
 function resolveScaffoldDir(): string | null {
   const candidates = [

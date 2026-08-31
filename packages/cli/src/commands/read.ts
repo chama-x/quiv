@@ -10,8 +10,11 @@ export const readCommand = new Command('read')
   .argument('<pattern-path>', 'Path or name of the pattern (e.g. features/offline-sync)')
   .option('-l, --level <level>', 'Detail level: overview (300t), full (1000t), implementation (3000t)', 'full')
   .option('-p, --path <path>', 'Explicit path to knowledge repository')
-  .action((patternPathArg, options) => {
-    const config = loadConfig(options.path);
+  .action((patternPathArg, options, cmd) => {
+    const globalOpts = cmd?.parent?.opts() || {};
+    const knowledgePathOpt = options.path || globalOpts.path;
+
+    const config = loadConfig(knowledgePathOpt);
 
     if (!config.knowledgePath) {
       console.error(
@@ -44,3 +47,4 @@ export const readCommand = new Command('read')
     const output = formatPatternRead(pattern, options.level as ReadLevel, config.knowledgePath);
     console.log(output);
   });
+

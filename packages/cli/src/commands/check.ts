@@ -1,15 +1,19 @@
 import { Command } from 'commander';
-import { loadConfig } from '../core/config.js';
+import { loadConfig, detectProjectName } from '../core/config.js';
 import { checkProjectUpdates } from '../core/registry.js';
 import chalk from 'chalk';
 
 export const checkCommand = new Command('check')
   .description('Check if patterns used by a project have newer versions in knowledge repo')
-  .requiredOption('-P, --project <project-name>', 'Name of the project to check')
+  .option('-P, --project <project-name>', 'Name of the project to check (auto-detected from package.json if omitted)')
   .option('-p, --path <path>', 'Explicit path to knowledge repository')
   .option('-r, --registry <path>', 'Explicit path to registry repository')
-  .action((options) => {
-    const config = loadConfig(options.path);
+  .action((options, cmd) => {
+    const globalOpts = cmd?.parent?.opts() || {};
+    const knowledgePathOpt = options.path || globalOpts.path;
+    const registryPathOpt = options.registry || globalOpts.registry;
+
+    const config = loadConfig(knowledgePathOpt);
 
     if (!config.knowledgePath) {
       console.error(
@@ -21,7 +25,9 @@ export const checkCommand = new Command('check')
       process.exit(1);
     }
 
-    if (!config.registryPath) {
+    const effectiveRegistry = registryPathOpt || config.registryPath;
+
+    if (!effectiveRegistry) {
       console.error(
         chalk.red(
           'Error: Could not locate registry repository.\n' +
@@ -31,18 +37,20 @@ export const checkCommand = new Command('check')
       process.exit(1);
     }
 
+    const projectName = detectProjectName(options.project);
+
     const updates = checkProjectUpdates(
-      config.registryPath,
+      effectiveRegistry,
       config.knowledgePath,
-      options.project
+      projectName
     );
 
     if (updates.length === 0) {
-      console.log(chalk.yellow(`No tracked patterns found for project "${options.project}" in registry.`));
+      console.log(chalk.yellow(`No tracked patterns found for project "${projectName}" in registry.`));
       return;
     }
 
-    console.log(chalk.bold(`\nPattern version status for: ${options.project}`));
+    console.log(chalk.bold(`\nPattern version status for: ${projectName}`));
     console.log(`────────────────────────────────────────────────────`);
 
     let outdatedCount = 0;
@@ -68,3 +76,4 @@ export const checkCommand = new Command('check')
       console.log(chalk.green(`\nAll patterns for "${options.project}" are up to date.`));
     }
   });
+

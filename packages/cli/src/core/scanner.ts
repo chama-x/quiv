@@ -167,11 +167,28 @@ function extractSummary(markdown: string): string {
 
 export function getPatternByPath(repoPath: string, patternPath: string): Pattern | null {
   const fullPath = path.resolve(repoPath, patternPath);
-  if (!fs.existsSync(fullPath)) return null;
+  if (fs.existsSync(fullPath)) {
+    const rel = path.relative(repoPath, fullPath);
+    const tier = TIERS.find((t) => rel.startsWith(t));
+    if (tier) {
+      const parsed = parsePatternDirectory(fullPath, tier, repoPath);
+      if (parsed) return parsed;
+    }
+  }
 
-  const rel = path.relative(repoPath, fullPath);
-  const tier = TIERS.find((t) => rel.startsWith(t));
-  if (!tier) return null;
+  // Fallback: search across all scanned patterns by name, basename, or subpath
+  const all = scanKnowledgeRepo(repoPath);
+  const normalized = patternPath.toLowerCase().trim();
+  const baseName = path.basename(normalized);
 
-  return parsePatternDirectory(fullPath, tier, repoPath);
+  return (
+    all.find(
+      (p) =>
+        p.path.toLowerCase() === normalized ||
+        p.name.toLowerCase() === normalized ||
+        p.name.toLowerCase() === baseName ||
+        p.path.toLowerCase().endsWith(`/${normalized}`) ||
+        p.path.toLowerCase().endsWith(`/${baseName}`)
+    ) || null
+  );
 }

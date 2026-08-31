@@ -4,6 +4,7 @@ import { readCommand } from './commands/read.js';
 import { findCommand } from './commands/find.js';
 import { useCommand } from './commands/use.js';
 import { contributeCommand } from './commands/contribute.js';
+import { learnCommand } from './commands/learn.js';
 import { checkCommand } from './commands/check.js';
 import { statusCommand } from './commands/status.js';
 import { initCommand } from './commands/init.js';
@@ -14,13 +15,18 @@ program
   .name('quiv')
   .alias('qv')
   .description('Agent Knowledge Kit (quiv/qv) — High-efficiency reusable architecture for AI coding agents')
-  .version('0.1.0');
+  .version('0.1.0')
+  .option('-p, --path <path>', 'Explicit path to knowledge repository')
+  .option('-r, --registry <path>', 'Explicit path to registry repository')
+  .option('-f, --format <format>', 'Output format (compact, table, json)', 'compact')
+  .option('--json', 'Output machine-readable JSON');
 
 // Register all subcommands
 program.addCommand(listCommand);
 program.addCommand(readCommand);
 program.addCommand(findCommand);
 program.addCommand(useCommand);
+program.addCommand(learnCommand);
 program.addCommand(contributeCommand);
 program.addCommand(checkCommand);
 program.addCommand(statusCommand);
@@ -31,3 +37,4 @@ program.parse(process.argv);
 if (!process.argv.slice(2).length) {
   program.outputHelp();
 }
+

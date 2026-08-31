@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
+import { fileURLToPath } from 'node:url';
 import type { QuivConfig } from './types.js';
 
 const DEFAULT_ORG = 'quiv-knowledge';
@@ -20,10 +21,17 @@ export function findConfigFile(startDir: string = process.cwd()): string | null 
     curr = parent;
   }
 
-  // Check home directory
-  const homeConfig = path.join(os.homedir(), '.config', 'quiv', 'config.json');
-  if (fs.existsSync(homeConfig)) {
-    return homeConfig;
+  // Check home directory locations
+  const globalConfigCandidates = [
+    path.join(os.homedir(), '.config', 'quiv', 'config.json'),
+    path.join(os.homedir(), '.quiv', 'config.json'),
+    path.join(os.homedir(), '.quivrc'),
+  ];
+
+  for (const candidate of globalConfigCandidates) {
+    if (fs.existsSync(candidate)) {
+      return candidate;
+    }
   }
 
   return null;
@@ -55,12 +63,30 @@ export function loadConfig(explicitKnowledgePath?: string): QuivConfig {
     knowledgePath = autoDetectKnowledgeRepo(process.cwd());
   }
 
+  // If still not resolved, check standard global and package-relative locations
+  if (!knowledgePath) {
+    knowledgePath = resolveGlobalOrPackageKnowledge();
+  }
+
+  // Auto-cache to ~/.config/quiv/config.json if resolved and no global config exists
+  if (knowledgePath && !configFile) {
+    try {
+      saveGlobalConfig({
+        org,
+        knowledgePath: path.resolve(knowledgePath),
+      });
+    } catch {
+      // Non-fatal if global config cannot be written
+    }
+  }
+
   // Resolve sibling registry & meta repos if not explicitly set
   let registryPath = envRegistryPath || fileConfig.registryPath;
   let metaPath = envMetaPath || fileConfig.metaPath;
 
   if (knowledgePath) {
-    const parentDir = path.dirname(path.resolve(knowledgePath));
+    const resolvedKPath = path.resolve(knowledgePath);
+    const parentDir = path.dirname(resolvedKPath);
     if (!registryPath) {
       const candidate = path.join(parentDir, 'registry');
       if (fs.existsSync(candidate)) registryPath = candidate;
@@ -82,6 +108,20 @@ export function loadConfig(explicitKnowledgePath?: string): QuivConfig {
 
 export function saveConfig(config: Partial<QuivConfig>, targetDir: string = process.cwd()): string {
   const targetFile = path.join(targetDir, '.quivrc');
+  const existing = fs.existsSync(targetFile)
+    ? JSON.parse(fs.readFileSync(targetFile, 'utf-8'))
+    : {};
+  const merged = { ...existing, ...config };
+  fs.writeFileSync(targetFile, JSON.stringify(merged, null, 2) + '\n', 'utf-8');
+  return targetFile;
+}
+
+export function saveGlobalConfig(config: Partial<QuivConfig>): string {
+  const globalDir = path.join(os.homedir(), '.config', 'quiv');
+  if (!fs.existsSync(globalDir)) {
+    fs.mkdirSync(globalDir, { recursive: true });
+  }
+  const targetFile = path.join(globalDir, 'config.json');
   const existing = fs.existsSync(targetFile)
     ? JSON.parse(fs.readFileSync(targetFile, 'utf-8'))
     : {};
@@ -118,15 +158,82 @@ export function autoDetectKnowledgeRepo(dir: string): string | undefined {
   return undefined;
 }
 
+export function resolveGlobalOrPackageKnowledge(): string | undefined {
+  const candidates: string[] = [
+    path.join(os.homedir(), '.quiv', 'knowledge'),
+    path.join(os.homedir(), '.config', 'quiv', 'knowledge'),
+    path.join(os.homedir(), '.local', 'share', 'quiv', 'knowledge'),
+  ];
+
+  // Also check package installation directory (for global or linked installs)
+  try {
+    const currentFile = fileURLToPath(import.meta.url);
+    const cliPackageDir = path.resolve(path.dirname(currentFile), '..', '..');
+    const monorepoKnowledge = path.resolve(cliPackageDir, '..', 'knowledge');
+    if (fs.existsSync(monorepoKnowledge) && isKnowledgeRepo(monorepoKnowledge)) {
+      candidates.push(monorepoKnowledge);
+    }
+  } catch {
+    // ignore
+  }
+
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate) && isKnowledgeRepo(candidate)) {
+      return candidate;
+    }
+  }
+
+  return undefined;
+}
+
 export function isKnowledgeRepo(dir: string): boolean {
   try {
+    if (!fs.existsSync(dir) || !fs.statSync(dir).isDirectory()) {
+      return false;
+    }
     const hasAgents = fs.existsSync(path.join(dir, 'AGENTS.md'));
     const hasIndex = fs.existsSync(path.join(dir, 'INDEX.md'));
     const hasPrimitives = fs.existsSync(path.join(dir, 'primitives'));
     const hasFeatures = fs.existsSync(path.join(dir, 'features'));
+    const hasCompositions = fs.existsSync(path.join(dir, 'compositions'));
+    const hasDomain = fs.existsSync(path.join(dir, 'domain'));
+    const hasTemplates = fs.existsSync(path.join(dir, 'templates'));
 
-    return (hasAgents || hasIndex) && (hasPrimitives || hasFeatures);
+    const tierCount = [hasPrimitives, hasFeatures, hasCompositions, hasDomain, hasTemplates].filter(Boolean).length;
+
+    return hasAgents || hasIndex || tierCount >= 1;
   } catch {
     return false;
   }
 }
+
+export function detectProjectName(explicit?: string, startDir: string = process.cwd()): string {
+  if (explicit && explicit.trim()) return explicit.trim();
+
+  // 1. Check package.json in startDir
+  const pkgJson = path.join(startDir, 'package.json');
+  if (fs.existsSync(pkgJson)) {
+    try {
+      const data = JSON.parse(fs.readFileSync(pkgJson, 'utf-8'));
+      if (data.name) return data.name;
+    } catch {
+      // ignore
+    }
+  }
+
+  // 2. Check .quivrc in startDir
+  const quivrc = path.join(startDir, '.quivrc');
+  if (fs.existsSync(quivrc)) {
+    try {
+      const data = JSON.parse(fs.readFileSync(quivrc, 'utf-8'));
+      if (data.project) return data.project;
+    } catch {
+      // ignore
+    }
+  }
+
+  // 3. Fallback to folder basename
+  const base = path.basename(startDir);
+  return base || 'unnamed-project';
+}
+

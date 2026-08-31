@@ -113,42 +113,57 @@ Bun required — 30 seconds if you don't have it:
 curl -fsSL https://bun.sh/install | bash
 ```
 
-Then, from anywhere:
+Then, from anywhere (zero-config, auto-discovers global or local knowledge):
 
 ```bash
 $ bunx quiv list --tier features
 ```
 
 ```text
-features (12)                                        204t
+Total patterns: 32
 
-offline-sync       VALIDATED     offline edit + conflict resolution
-audit-log          PROVEN        append-only event trail
-image-pipeline     EXPERIMENTAL  srcset + cache headers
-...
+[FEATURES] (6)
+  • features/offline-sync [PROVEN|v2.0] - Full offline synchronization engine with durable outbox queue
+  • features/intent-install-prompt [VALID|v1.0] - Defers PWA install prompt until high-intent user signals
+  • features/github-star-engine [PROVEN|v1.0] - Complete 7-second README conversion funnel
+  ...
 ```
 
 ```bash
-$ bunx quiv find "conflict resolution"
+$ bunx quiv find "cinema storefront oled tokens"
 ```
 
 ```text
-features/offline-sync         0.92
-utils/conflictResolution      0.71
-hooks/useOfflineEntity        0.44
+Found 22 matching pattern(s):
+
+[Score: 405] compositions/app-styles/apple-native-pwa/components (VALIDATED)
+  Match: name
+  "Apple-native PWA storefront layout shell with parallel transitions, per-screen scroll..."
+
+[Score: 175] compositions/app-styles/apple-native-pwa (VALIDATED)
+  Match: synonym
+  "...components/storefront-shell.tsx..."
+
+[Score: 145] compositions/apple-native-pwa-shell (EXPERIMENTAL)
+[Score: 585] compositions/oled-glass-tokens (EXPERIMENTAL)
 ```
 
 ```bash
-$ bunx quiv use features/offline-sync --project my-project
+$ bunx quiv use compositions/app-styles/apple-native-pwa --dest ./src --project my-project
 ```
 
 ```text
-✓ resolved   utils/conflictResolution, hooks/useOfflineEntity
-✓ wrote      7 files → my-project/src/features/offline-sync/
-✓ registry   my-project tracks offline-sync v1.2.0      184t
+=== Pattern: apple-native-pwa (compositions/app-styles/apple-native-pwa) ===
+Status:  VALIDATED | Version: v1.0
+Dependencies (2):
+  • compositions/design-tokens (v1.0)
+  • compositions/motion-patterns (v1.0)
+
+✓ Scaffolded 24 file(s) into: ./src
+✓ Recorded in registry for project: "my-project"
 ```
 
-To keep it: `bun install -g @quiv-knowledge/cli` — `quiv` and `qv` both work.  
+To keep it: `bun install -g @quiv-knowledge/cli` — `quiv` and `qv` both work globally.  
 No Bun handy? [Open a Codespace](https://codespaces.new/chama-x/quiv) with everything preloaded.
 
 ---
@@ -161,36 +176,49 @@ No Bun handy? [Open a Codespace](https://codespaces.new/chama-x/quiv) with every
 
 | Tier | Holds | Example |
 | :--- | :--- | :--- |
-| `primitives` | building blocks | `hooks/useOfflineEntity` |
-| `domain` | business rules | `erp/inventory-allocation` |
-| `features` | turnkey capabilities | `offline-sync` |
-| `compositions` | assembly guidelines | `pwa-apple` |
-| `templates` | project scaffolds | `nextjs-pwa` |
+| `primitives` | building blocks | `primitives/hooks/useOfflineEntity` |
+| `domain` | business rules | `domain/erp/inventory-allocation` |
+| `features` | turnkey capabilities | `features/offline-sync` |
+| `compositions` | assembly guidelines | `compositions/app-styles/apple-native-pwa` |
+| `templates` | project scaffolds | `templates/high-star-oss-repo` |
 
-`use` pulls the dependency tree with it — a feature arrives standing on the
-hooks and utils it actually needs.
+`use` pulls the entire dependency tree with it — a composition arrives standing on the design tokens, hooks, and motion primitives it actually needs.
 
 Every pattern carries a status it has earned:
 
 `EXPERIMENTAL → VALIDATED → PROVEN`
 
-Status isn't a version. A version says the code changed. Status says the
-approach survived.
+Status isn't a version. A version says the code changed. Status says the approach survived.
 
-A registry remembers which projects consume which patterns, at which versions.
-When a pattern moves, `quiv check` tells you exactly where the drift is.
+A registry tracks which projects consume which patterns, at which versions. When a pattern moves, `quiv check` flags drift immediately.
 
 ---
 
-## Equip your agents
+## Equip your agents & Antigravity (10-Second Setup)
 
 ```bash
-bunx quiv init --agents
+bunx quiv init --agents --antigravity
 ```
 
-Writes `AGENTS.md` plus rules for Claude Code, Cursor (`.cursor/rules/quiv.mdc`), and Copilot. From then
-on, the agent's instinct is the loop: `find` the problem → `read` the pattern →
-`use` the code — and write only what no pattern covers.
+Installs:
+- **Antigravity Native Skill**: `~/.gemini/config/skills/quiv/SKILL.md` (and `.agents/skills/quiv/SKILL.md`) for zero-prompt native agent activation.
+- **Global & Project Rules**: `~/.gemini/config/rules/quiv.md`, `AGENTS.md`, and `.cursor/rules/quiv.mdc` for Cursor, Claude Code, and Copilot.
+- **Global Config Fallback**: `~/.config/quiv/config.json` so every CLI invocation in any workspace succeeds with zero friction.
+
+### Day-to-Day: Just talk to your Agent
+
+From then on, you don't even have to type terminal commands. You converse naturally with Antigravity, Cursor, or Claude Code:
+
+```text
+You:    "Add offline sync with conflict resolution using QUIV."
+Agent:  quiv find "offline sync" → quiv read → quiv use features/offline-sync
+        Scaffolds 7 files with IndexedDB outbox. Writes project custom code.
+
+You:    "Extract the gesture drawer we built into QUIV."
+Agent:  quiv learn --from ./src/components/Drawer.tsx --tier compositions --name gesture-drawer \
+          -m "feat: velocity gesture drawer" -c "touch-action: none" -r "react-spring" -e "60fps on iOS"
+        Automatically packages the pattern and opens PR.
+```
 
 ---
 
@@ -198,23 +226,26 @@ on, the agent's instinct is the loop: `find` the problem → `read` the pattern 
 
 | Command | Does | Output budget |
 | :--- | :--- | :--- |
-| `quiv list` | Patterns by tier, domain, or capability | ≤ 800t |
-| `quiv find "<query>"` | Search by problem description | ~ 500t |
-| `quiv read <pattern>` | Read at `--level overview\|full\|implementation` | 300–3,000t |
-| `quiv use <pattern> --project <dir>` | Resolve deps, write files, update registry | ~ 200t |
-| `quiv check --project <dir>` | Flag outdated pattern versions in use | ~ 300t |
-| `quiv status` | Inventory health check | ~ 100t |
-| `quiv contribute` | Branch, Lore-lite commit, PR | — |
-| `quiv init` | Bootstrap the knowledge repos | — |
+| `quiv find "<query>" [--json]` | Deep semantic & code search by problem or keyword | ~ 500t |
+| `quiv read <pattern> [-l overview\|full\|implementation]` | Read with progressive disclosure levels | 300–3,000t |
+| `quiv use <pattern> [-d <dest>] [-P <project>]` | Resolve deps, copy/scaffold files, update registry | ~ 200t |
+| `quiv learn [options]` / `extract` | Harvest and distill components from projects into QUIV | ~ 300t |
+| `quiv list [-t <tier>] [-f compact\|table\|json]` | Patterns by tier, domain, or capability | $\le$ 800t |
+| `quiv check -P <project>` | Flag outdated pattern versions in use | ~ 300t |
+| `quiv status` | Quick health and inventory check | ~ 100t |
+| `quiv contribute [options]` | Branch, Lore-lite commit, and open PR | — |
+| `quiv init [--agents] [--antigravity]` | Bootstrap knowledge base, agent skills & rules | — |
+
+**Global Options:** `-p, --path <path>`, `-r, --registry <path>`, `-f, --format <compact|table|json>`, `--json` can be passed to any command or at the top level (e.g. `quiv -p ./knowledge list`).
 
 Budgets are design targets, not marketing: every command prints its actual
 token count. Run one and check it.
 
 ---
 
-## Contributing
+## Post-Project Learning & Contributing
 
-`quiv contribute` opens the branch, formats the commit, and files the PR.
+`quiv learn` (or `quiv contribute`) packages your code, formats the commit with Lore-lite trailers, and opens the PR.
 The standard is three trailers:
 
 ```git

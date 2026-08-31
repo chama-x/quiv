@@ -19,8 +19,11 @@ export const contributeCommand = new Command('contribute')
   .option('-e, --evidence <evidence>', 'Empirical evidence or test results')
   .option('--no-pr', 'Skip opening GitHub PR (only create branch and commit)')
   .option('-p, --path <path>', 'Explicit path to knowledge repository')
-  .action(async (options) => {
-    const config = loadConfig(options.path);
+  .action(async (options, cmd) => {
+    const globalOpts = cmd?.parent?.opts() || {};
+    const knowledgePathOpt = options.path || globalOpts.path;
+
+    const config = loadConfig(knowledgePathOpt);
 
     if (!config.knowledgePath) {
       console.error(
@@ -43,6 +46,7 @@ export const contributeCommand = new Command('contribute')
 
     const git = getGit(config.knowledgePath);
     const patternsToStage: string[] = [];
+
 
     if (options.all) {
       patternsToStage.push('.');

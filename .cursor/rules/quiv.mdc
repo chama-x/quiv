@@ -1,35 +1,18 @@
 ---
-description: quiv agent architecture rules and loop protocol
+description: Quiv Architecture Knowledge System Global Agent Rule
 globs: *
 alwaysApply: true
 ---
 
-# quiv Agent Architecture Rules
+# Quiv Architecture Rule for AI Agents
 
-When implementing full-stack features, domain logic, or complex integrations in this repository:
-
-1. **Search Before Writing**:
-   Always check the quiv registry first before writing logic from scratch:
-   ```bash
-   bunx quiv find "<feature or problem description>"
-   ```
-
-2. **Read Contract First**:
-   Read the pattern contract at overview level to inspect types, invariants, and constraints with minimal context:
-   ```bash
-   bunx quiv read <pattern-path> --level overview
-   ```
-
-3. **Scaffold Pattern**:
-   Pull the pattern and its dependency tree into the project:
-   ```bash
-   bunx quiv use <pattern-path> --project <project-dir>
-   ```
-
-4. **Lore-lite Commit Standard**:
-   When committing architectural changes or new patterns, always include Lore-lite trailers:
-   ```git
-   Constraint: Invariant that must not be broken
-   Rejected: Alternative evaluated | Why it failed
-   Evidence: Empirical validation / test verification
-   ```
+- **Stop Starting from Scratch**: Always check for existing proven/validated architectural patterns before writing boilerplate or designing state/layout from zero.
+- **Day-to-Day Workflow**:
+  1. `quiv find "<query>"` to discover relevant patterns.
+  2. `quiv read <pattern> --level overview` to understand constraints and rejected approaches (<300t budget).
+  3. `quiv use <pattern> --dest ./src --project <project-name>` to scaffold the pattern and its recursive dependencies.
+  4. `quiv learn --from <path> --tier <tier> --name <name> -m <msg> -c <constraints> -r <rejected> -e <evidence>` to harvest new reusable components at the end of a project.
+- **Lore-lite Standard**: When adding or learning patterns, always document:
+  - `Constraint:` what must not break
+  - `Rejected:` alternatives tried and why they failed
+  - `Evidence:` benchmark or test verification

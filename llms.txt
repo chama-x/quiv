@@ -27,6 +27,10 @@ quiv find "offline sync with conflict resolution"
 # Read pattern with progressive disclosure (overview: 250t, full: 1000t, implementation: 3000t)
 quiv read features/offline-sync --level overview
 
-# Scaffold pattern into a target project
-quiv use features/offline-sync --project my-app
+# Scaffold pattern and dependencies into a target project
+quiv use features/offline-sync --dest ./src --project my-app
+
+# Distill and harvest newly built components into QUIV
+quiv learn --from ./src/components/MyComponent.tsx --tier compositions --name my-component -m "feat: description" -c "constraints" -r "rejected" -e "evidence"
 ```
+
