@@ -1,0 +1,44 @@
+name: 💡 Feature or Pattern Request
+description: Propose a new architecture pattern, capability tier, or CLI improvement.
+labels: ["enhancement", "discussion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We love community feature proposals and pattern contributions!
+  - type: dropdown
+    id: category
+    attributes:
+      label: Request Category
+      description: Which area does this proposal target?
+      options:
+        - "CLI & DX Improvement"
+        - "New Capability Tier Pattern (Primitives/Domain/Features)"
+        - "Agent Integration (Claude Code, Cursor, Copilot, Antigravity)"
+        - "Token Optimization & Benchmarks"
+        - "Other"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Explain the developer pain point or agent inefficiency.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed Solution / Architecture
+      description: How should this work? If proposing a pattern, provide sample API or structure.
+    validations:
+      required: true
+  - type: checkboxes
+    id: willing_to_contribute
+    attributes:
+      label: Community Participation
+      options:
+        - label: I would be interested in submitting a PR or contributing this pattern!
+          required: false
+        - label: I have starred the repository on GitHub ⭐
+          required: false

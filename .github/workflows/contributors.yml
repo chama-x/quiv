@@ -1,0 +1,18 @@
+name: All Contributors
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  contribute:
+    runs-on: ubuntu-latest
+    if: startsWith(github.event.comment.body, '@all-contributors')
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: All Contributors Action
+        uses: all-contributors/all-contributors-bot@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

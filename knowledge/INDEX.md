@@ -5,7 +5,7 @@
 ## Quick Navigation
 
 ### By Status
-- **PROVEN** (3+ deployments): `primitives/hooks/useOfflineEntity`, `primitives/ui/zero-cls-banner`, `primitives/utils/conflictResolution`, `primitives/utils/haptics`, `primitives/utils/scroll-memory`, `features/offline-sync`, `compositions/motion-patterns`, `compositions/motion-patterns/feedback`, `compositions/motion-patterns/micro-interactions`, `compositions/motion-patterns/springs`, `compositions/motion-patterns/transitions`, `compositions/pwa-apple`
+- **PROVEN** (3+ deployments): `primitives/hooks/useOfflineEntity`, `primitives/meta/dark-mode-svg`, `primitives/meta/gh-badge-matrix`, `primitives/meta/llms-txt-spec`, `primitives/ui/zero-cls-banner`, `primitives/utils/conflictResolution`, `primitives/utils/haptics`, `primitives/utils/scroll-memory`, `features/community-flywheel`, `features/github-star-engine`, `features/offline-sync`, `compositions/high-converting-repo-shell`, `compositions/motion-patterns`, `compositions/motion-patterns/feedback`, `compositions/motion-patterns/micro-interactions`, `compositions/motion-patterns/springs`, `compositions/motion-patterns/transitions`, `compositions/pwa-apple`, `compositions/supabase-launch-week`, `templates/high-star-oss-repo`
 - **VALIDATED** (1-2 deployments): `features/intent-install-prompt`, `compositions/app-styles/apple-native-pwa`, `compositions/app-styles/apple-native-pwa/components`, `compositions/design-tokens`, `compositions/motion-patterns/loading`
 - **EXPERIMENTAL** (new): _(none yet)_
 
@@ -15,6 +15,9 @@
 | Pattern | Path | Status | Details |
 |---|---|---|---|
 | **useOfflineEntity** | `primitives/hooks/useOfflineEntity` | `PROVEN` | v1.0 |
+| **dark-mode-svg** | `primitives/meta/dark-mode-svg` | `PROVEN` | v1.0 |
+| **gh-badge-matrix** | `primitives/meta/gh-badge-matrix` | `PROVEN` | v1.0 |
+| **llms-txt-spec** | `primitives/meta/llms-txt-spec` | `PROVEN` | v1.0 |
 | **zero-cls-banner** | `primitives/ui/zero-cls-banner` | `PROVEN` | v1.0 |
 | **conflictResolution** | `primitives/utils/conflictResolution` | `PROVEN` | v1.0 |
 | **haptics** | `primitives/utils/haptics` | `PROVEN` | v1.0 |
@@ -28,6 +31,8 @@
 ### Features
 | Pattern | Path | Status | Details |
 |---|---|---|---|
+| **community-flywheel** | `features/community-flywheel` | `PROVEN` | v1.0 |
+| **github-star-engine** | `features/github-star-engine` | `PROVEN` | v1.0 |
 | **intent-install-prompt** | `features/intent-install-prompt` | `VALIDATED` | v1.0 |
 | **offline-sync** | `features/offline-sync` | `PROVEN` | v2.0 |
 
@@ -37,6 +42,7 @@
 | **apple-native-pwa** | `compositions/app-styles/apple-native-pwa` | `VALIDATED` | v1.0 |
 | **storefront-shell** | `compositions/app-styles/apple-native-pwa/components` | `VALIDATED` | v1.0 |
 | **design-tokens** | `compositions/design-tokens` | `VALIDATED` | v1.0 |
+| **high-converting-repo-shell** | `compositions/high-converting-repo-shell` | `PROVEN` | v1.0 |
 | **motion-patterns** | `compositions/motion-patterns` | `PROVEN` | v1.0 |
 | **feedback-motion** | `compositions/motion-patterns/feedback` | `PROVEN` | v1.0 |
 | **loading-motion** | `compositions/motion-patterns/loading` | `VALIDATED` | v1.0 |
@@ -44,8 +50,9 @@
 | **apple-hig-springs** | `compositions/motion-patterns/springs` | `PROVEN` | v1.0 |
 | **page-transitions** | `compositions/motion-patterns/transitions` | `PROVEN` | v1.0 |
 | **pwa-apple** | `compositions/pwa-apple` | `PROVEN` | v1.0 |
+| **supabase-launch-week** | `compositions/supabase-launch-week` | `PROVEN` | v1.0 |
 
 ### Templates
 | Pattern | Path | Status | Details |
 |---|---|---|---|
-| _(empty)_ | `templates/` | - | - |
+| **high-star-oss-repo** | `templates/high-star-oss-repo` | `PROVEN` | v1.0 |

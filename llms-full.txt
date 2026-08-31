@@ -1,0 +1,74 @@
+# quiv (Knowledge Kit) — Complete AI Agent Reference
+
+> The comprehensive API, architecture specification, and progressive disclosure guide for AI coding agents.
+
+---
+
+## 1. System Overview
+
+`quiv` (and alias `qv`) provides a 10–32x token-efficient CLI-first interface for AI coding agents to discover, consume, and contribute reusable software architectures, domain models, and primitives across projects without bloating context windows.
+
+---
+
+## 2. The 5 Capability Tiers
+
+### Tier 1: Primitives (`knowledge/primitives/`)
+- Atomic, dependency-minimal utilities and contracts.
+- Examples: `useOfflineEntity` (IndexedDB hook), `conflictResolution` (CRDT & LWW resolution), `haptics` (Web Vibration API), `scroll-memory` (Viewport restoration).
+
+### Tier 2: Domain (`knowledge/domain/`)
+- Pure business knowledge, calculations, and domain schemas.
+- Examples: Pricing calculation engines, compliance rules, tax estimators.
+
+### Tier 3: Features (`knowledge/features/`)
+- Complete self-contained feature slices combining primitives and domain rules.
+- Examples: `features/offline-sync` (IndexedDB storage + background outbox queue + retry worker + conflict resolver), `features/intent-install-prompt` (PWA installation trigger).
+
+### Tier 4: Compositions (`knowledge/compositions/`)
+- Structural blueprints showing how to assemble primitives and features for specific application types.
+- Examples: `compositions/motion-patterns` (Apple HIG springs, page transitions), `compositions/pwa-apple` (iOS standalone display polish).
+
+### Tier 5: Templates (`knowledge/templates/`)
+- Full project scaffolds and baseline boilerplates.
+
+---
+
+## 3. CLI Command API
+
+### `quiv list`
+- Flags: `--tier <primitives|domain|features|compositions|templates>`, `--format <compact|table|json>`
+- Outputs a token-efficient catalog of patterns with status markers.
+
+### `quiv find "<query>"`
+- Performs keyword and semantic matching against pattern names, descriptions, tags, and problem statements.
+
+### `quiv read <pattern-path>`
+- Flags: `--level <overview|full|implementation>`
+  - `overview`: 200–300 tokens (Problem statement, contract, and solution summary).
+  - `full`: 800–1,500 tokens (Full README including constraints and usage examples).
+  - `implementation`: 2,000–5,000 tokens (Full source code of all pattern files).
+
+### `quiv use <pattern-path> --project <name>`
+- Resolves dependencies declared in frontmatter (`depends_on`).
+- Scaffolds code into the target project and records the dependency in `registry/projects.json`.
+
+### `quiv contribute --pattern <path>`
+- Verifies pattern structure and runs tests.
+- Creates a git branch and prompts for Lore-lite trailers.
+
+### `quiv check --project <name>`
+- Detects if patterns in a project have newer versions available in `knowledge/`.
+
+---
+
+## 4. Lore-lite Commit Standard
+
+```git
+<type>(<scope>): <title>
+
+<rationale>
+
+Constraint: <invariant that must not be broken>
+Rejected: <alternative evaluated> | <why it was rejected>
+Evidence: <test verification or benchmark data>
+```

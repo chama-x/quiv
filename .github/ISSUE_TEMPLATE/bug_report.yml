@@ -1,0 +1,50 @@
+name: 🐛 Bug Report
+description: Report a bug, crash, or unexpected behavior in quiv.
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this issue! Please search existing issues before filing a duplicate.
+  - type: input
+    id: version
+    attributes:
+      label: quiv Version / Runtime
+      description: What version of quiv and runtime are you using? (e.g. `quiv --version` / Bun 1.2.0 / Node 22)
+      placeholder: "quiv 1.0.0 (Bun 1.2)"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the Bug
+      description: A clear and concise description of what happened.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Exact CLI commands or agent workflow to reproduce the issue.
+      placeholder: |
+        1. Run `quiv find "..."`
+        2. Execute `quiv use ...`
+        3. See error output:
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Contributor Checklist
+      options:
+        - label: I have searched existing issues to ensure this is not a duplicate.
+          required: true
+        - label: I have starred the repo on GitHub ⭐
+          required: false

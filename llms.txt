@@ -1,0 +1,32 @@
+# quiv (Knowledge Kit)
+
+> 10–32x token-efficient CLI & architecture system for AI coding agents (Claude Code, Cursor, Antigravity, Copilot).
+
+## Core Philosophy & Capability Tiers
+quiv replaces bloated codebase context dumps with a 5-tier progressive disclosure architecture:
+1. `primitives/`: Atomic building blocks (hooks, pure utils, headless UI contracts)
+2. `domain/`: Business logic, domain rules, calculation formulas, data schemas
+3. `features/`: Complete encapsulated feature units (offline sync, auth queues)
+4. `compositions/`: Assembly patterns for specific app categories (Apple PWA, dashboard)
+5. `templates/`: Full starter scaffolds
+
+## Essential Context & Documentation Links
+- [CLI Reference](https://raw.githubusercontent.com/quiv-knowledge/quiv/main/packages/cli/README.md): Commands, options, and progressive disclosure flags.
+- [Knowledge Index](https://raw.githubusercontent.com/quiv-knowledge/quiv/main/knowledge/INDEX.md): Up-to-date catalog of all available patterns and their validation status.
+- [Conventions & Lore-lite](https://raw.githubusercontent.com/quiv-knowledge/quiv/main/meta/conventions.md): Commit trailers (Constraint, Rejected, Evidence) and contribution standards.
+- [Full Context Bundle](https://raw.githubusercontent.com/quiv-knowledge/quiv/main/llms-full.txt): Complete API definitions and progressive disclosure guides.
+
+## Primary CLI Commands
+```bash
+# Discover patterns (200-400 tokens)
+quiv list --tier features
+
+# Search patterns semantically (300-500 tokens)
+quiv find "offline sync with conflict resolution"
+
+# Read pattern with progressive disclosure (overview: 250t, full: 1000t, implementation: 3000t)
+quiv read features/offline-sync --level overview
+
+# Scaffold pattern into a target project
+quiv use features/offline-sync --project my-app
+```

@@ -1,0 +1,30 @@
+# {{PROJECT_NAME}}
+
+> {{ONE_LINER_DESCRIPTION}}
+
+## Overview
+{{PROJECT_NAME}} provides a {{HIGH_LEVEL_BENEFIT}} for AI coding agents (Claude Code, Antigravity, Cursor, Copilot).
+
+## Core Capabilities & Architecture
+- {{FEATURE_1}}
+- {{FEATURE_2}}
+- {{FEATURE_3}}
+- {{FEATURE_4}}
+
+## Essential Documentation & Context Links
+- [CLI Reference]({{CLI_DOCS_URL}}): Full command syntax, flags, and options.
+- [Architecture & Tiers]({{ARCHITECTURE_DOCS_URL}}): Deep dive into repository tiers and primitives.
+- [Conventions & Guidelines]({{CONVENTIONS_DOCS_URL}}): Contribution standards and Lore metadata.
+- [Full Context Bundle]({{LLMS_FULL_URL}}): Comprehensive API and pattern definitions for agent ingestion.
+
+## Standard CLI Usage
+```bash
+# 1. Search patterns
+{{CLI_NAME}} find "{{SEARCH_EXAMPLE}}"
+
+# 2. Inspect pattern
+{{CLI_NAME}} read {{PATTERN_PATH_EXAMPLE}} --level overview
+
+# 3. Apply pattern
+{{CLI_NAME}} use {{PATTERN_PATH_EXAMPLE}} --project {{PROJECT_NAME_EXAMPLE}}
+```

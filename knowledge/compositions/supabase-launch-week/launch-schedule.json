@@ -1,0 +1,35 @@
+{
+  "title": "5-Day Launch Week Blueprint",
+  "days": [
+    {
+      "day": 1,
+      "name": "The Core Foundation",
+      "channels": ["Show HN", "Twitter/X", "Discord"],
+      "deliverable": "v1.0.0 Release + Benchmark Report"
+    },
+    {
+      "day": 2,
+      "name": "Progressive Disclosure CLI",
+      "channels": ["Twitter/X Video", "Reddit r/typescript"],
+      "deliverable": "Interactive Search & Token Filters"
+    },
+    {
+      "day": 3,
+      "name": "Architecture Pattern Catalog",
+      "channels": ["Reddit r/programming", "Dev.to"],
+      "deliverable": "5 Capability Tiers Open Source Library"
+    },
+    {
+      "day": 4,
+      "name": "AI Agent Interoperability",
+      "channels": ["Claude Code Community", "Cursor Forum"],
+      "deliverable": "AGENTS.md and .cursorrules Auto-Generator"
+    },
+    {
+      "day": 5,
+      "name": "Community & Roadmap",
+      "channels": ["Twitter/X Space", "GitHub Discussions"],
+      "deliverable": "Lore-lite Contributor Wall & v2.0 RFC"
+    }
+  ]
+}
