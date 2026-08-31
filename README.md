@@ -1,21 +1,23 @@
 <p align="center">
-  <a href="https://github.com/quiv-knowledge/quiv">
-    <img src="assets/banner-dark.svg#gh-dark-mode-only" alt="quiv banner" width="100%">
-    <img src="assets/banner-light.svg#gh-light-mode-only" alt="quiv banner" width="100%">
+  <a href="https://github.com/chama-x/quiv">
+    <img src="assets/logo.svg" alt="quiv logo" width="72" height="72">
   </a>
 </p>
 
-# `quiv` (Knowledge Kit)
-
-> **The Agent Knowledge Kit & Architecture System** — 10–32x token-efficient pattern discovery and progressive disclosure for AI coding agents (Claude Code, Cursor, Antigravity, Copilot).
+<h1 align="center">quiv</h1>
 
 <p align="center">
-  <a href="https://github.com/quiv-knowledge/quiv/stargazers"><img src="https://img.shields.io/github/stars/quiv-knowledge/quiv?style=flat-square&logo=github&color=blue" alt="GitHub Stars"></a>
+  <strong>The Agent Knowledge Kit &amp; Architecture System</strong><br>
+  10–32x token-efficient architecture discovery and progressive disclosure for AI coding agents.
+</p>
+
+<p align="center">
+  <a href="https://github.com/chama-x/quiv/stargazers"><img src="https://img.shields.io/github/stars/chama-x/quiv?style=flat-square&logo=github&color=blue" alt="GitHub Stars"></a>
   <a href="https://bun.sh"><img src="https://img.shields.io/badge/runtime-bun-black?style=flat-square&logo=bun" alt="Runtime: Bun"></a>
   <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/typescript-5.7+-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-22c55e?style=flat-square" alt="License: MIT"></a>
   <a href="https://discord.gg/quiv"><img src="https://img.shields.io/badge/community-discord-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord"></a>
-  <a href="https://codespaces.new/quiv-knowledge/quiv"><img src="https://img.shields.io/badge/codespaces-open_sandbox-purple?style=flat-square&logo=github" alt="Open in Codespaces"></a>
+  <a href="https://codespaces.new/chama-x/quiv"><img src="https://img.shields.io/badge/codespaces-open_sandbox-purple?style=flat-square&logo=github" alt="Open in Codespaces"></a>
 </p>
 
 <p align="center">
@@ -40,18 +42,19 @@ When AI coding agents build full-stack features, developers typically dump entir
 ### The `quiv` Solution: Progressive Disclosure CLI
 Instead of monolithic dumps, `quiv` provides a **5-tier architecture registry** and progressive disclosure CLI (`quiv list`, `find`, `read`, `use`) that delivers **only the exact 200–800 tokens** an agent needs to execute cleanly.
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│ $ bunx quiv find "offline sync"                                        │
-│ ✔ Found 3 patterns [240 tokens | 12ms]                                 │
-│                                                                        │
-│ $ quiv read features/offline-sync --level overview                     │
-│ ✔ Returned type contract & rules [280 tokens | 0 boilerplate]          │
-│                                                                        │
-│ $ quiv use features/offline-sync --project erp-app                     │
-│ ✔ Scaffolded into project & updated registry [180 tokens]              │
-│ ⚡ Total context savings: 31.8x reduction vs. full repository loading   │
-└────────────────────────────────────────────────────────────────────────┘
+```bash
+# 1. Search semantically for a requirement
+$ bunx quiv find "offline sync"
+✔ Found 3 patterns [240 tokens | 12ms]
+
+# 2. Read only high-level contract (zero implementation bloat)
+$ quiv read features/offline-sync --level overview
+✔ Returned type contract & rules [280 tokens]
+
+# 3. Scaffold and update registry with one command
+$ quiv use features/offline-sync --project erp-app
+✔ Scaffolded into project & updated registry [180 tokens]
+⚡ Total context savings: 31.8x reduction vs. raw repository loading
 ```
 
 ---
@@ -152,7 +155,7 @@ AI agents will automatically leverage `quiv find` and `quiv read` whenever build
 
 ## 👥 Contributors & Community
 
-Contributions are welcomed and celebrated! Feel free to pick up a [`good-first-issue`](https://github.com/quiv-knowledge/quiv/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) or join our [Discord](https://discord.gg/quiv).
+Contributions are welcomed and celebrated! Feel free to pick up a [`good-first-issue`](https://github.com/chama-x/quiv/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) or join our [Discord](https://discord.gg/quiv).
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
@@ -164,8 +167,8 @@ Contributions are welcomed and celebrated! Feel free to pick up a [`good-first-i
 If `quiv` saves your AI agents context tokens and keeps your architecture clean, please consider giving us a ⭐ on GitHub!
 
 <p align="center">
-  <a href="https://star-history.com/#quiv-knowledge/quiv&Date">
-    <img src="https://api.star-history.com/svg?repos=quiv-knowledge/quiv&type=Date" alt="Star History Chart" width="90%">
+  <a href="https://star-history.com/#chama-x/quiv&Date">
+    <img src="https://api.star-history.com/svg?repos=chama-x/quiv&type=Date" alt="Star History Chart" width="90%">
   </a>
 </p>
 
