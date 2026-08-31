@@ -157,23 +157,20 @@ Evidence: Tested 1,000 mutations, 100% synced on reconnect
 
 ---
 
-<!-- 10. COMMUNITY — Minimal, authentic -->
+<!-- 10. COMMUNITY & CONTRIBUTING -->
 
 ## Community
 
-[![Discord](https://img.shields.io/badge/Discord-join_us-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/quiv)
-[![Good First Issues](https://img.shields.io/badge/Issues-good_first-7C3AED?style=for-the-badge&logo=github)](https://github.com/chama-x/quiv/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+Contributions, feature requests, and pattern submissions are welcome!
+
+<p align="left">
+  <a href="https://discord.gg/quiv"><img src="https://img.shields.io/badge/Discord-Join_Community-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord"></a>
+  <a href="https://github.com/chama-x/quiv/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"><img src="https://img.shields.io/badge/Issues-Good_First_Issues-7C3AED?style=flat-square&logo=github" alt="Good First Issues"></a>
+  <a href="https://github.com/chama-x/quiv/discussions"><img src="https://img.shields.io/badge/Discussions-Join_RFCs-0ea5e9?style=flat-square&logo=github" alt="Discussions"></a>
+</p>
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-
----
-
-<!-- 11. STAR HISTORY — Social proof -->
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=chama-x/quiv&type=Date)](https://star-history.com/#chama-x/quiv&Date)
 
 ---
 
