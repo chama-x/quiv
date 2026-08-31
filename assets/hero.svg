@@ -1,0 +1,69 @@
+<svg width="880" height="260" viewBox="0 0 880 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="hero_glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#1D4ED8" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#090D16" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="brand_grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="text_grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#93C5FD"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="880" height="260" rx="16" fill="#090D16"/>
+  <rect width="880" height="260" rx="16" fill="url(#hero_glow)"/>
+  <rect x="0.5" y="0.5" width="879" height="259" rx="15.5" stroke="#1E293B" stroke-width="1"/>
+
+  <!-- Logo Mark + Wordmark -->
+  <g transform="translate(440, 48)">
+    <!-- Icon Box -->
+    <rect x="-110" y="-18" width="40" height="40" rx="10" fill="url(#brand_grad)"/>
+    <path d="M-98 -4H-82M-98 2H-87M-98 8H-82" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="-83" cy="2" r="2" fill="#93C5FD"/>
+
+    <!-- quiv text -->
+    <text x="-58" y="14" fill="url(#text_grad)" font-family="system-ui, -apple-system, 'SF Pro Display', Inter, sans-serif" font-size="38" font-weight="900" letter-spacing="-0.04em">quiv</text>
+    
+    <!-- Version chip -->
+    <rect x="24" y="-8" width="76" height="22" rx="11" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <text x="62" y="7" fill="#60A5FA" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" text-anchor="middle">v1.0</text>
+  </g>
+
+  <!-- Main Punchline (Loud Minimalism) -->
+  <text x="440" y="126" fill="#F8FAFC" font-family="system-ui, -apple-system, 'SF Pro Display', Inter, sans-serif" font-size="22" font-weight="700" text-anchor="middle" letter-spacing="-0.02em">
+    Your AI Agent's Architecture Memory.
+  </text>
+  <text x="440" y="154" fill="#94A3B8" font-family="system-ui, -apple-system, Inter, sans-serif" font-size="14" font-weight="400" text-anchor="middle">
+    Stop dumping entire codebases into prompts. Feed 200-token modular patterns on demand.
+  </text>
+
+  <!-- 3 High-Impact Value Chips -->
+  <g transform="translate(440, 192)">
+    <!-- Chip 1 -->
+    <g transform="translate(-240, 0)">
+      <rect x="-90" y="0" width="180" height="34" rx="17" fill="#0F172A" stroke="#10B981" stroke-opacity="0.4" stroke-width="1"/>
+      <circle cx="-68" cy="17" r="4" fill="#10B981"/>
+      <text x="-54" y="22" fill="#34D399" font-family="system-ui, sans-serif" font-size="12" font-weight="600">32× Less Tokens</text>
+    </g>
+
+    <!-- Chip 2 -->
+    <g transform="translate(0, 0)">
+      <rect x="-90" y="0" width="180" height="34" rx="17" fill="#0F172A" stroke="#3B82F6" stroke-opacity="0.4" stroke-width="1"/>
+      <circle cx="-68" cy="17" r="4" fill="#3B82F6"/>
+      <text x="-54" y="22" fill="#60A5FA" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Sub-15ms Lookups</text>
+    </g>
+
+    <!-- Chip 3 -->
+    <g transform="translate(240, 0)">
+      <rect x="-90" y="0" width="180" height="34" rx="17" fill="#0F172A" stroke="#A855F7" stroke-opacity="0.4" stroke-width="1"/>
+      <circle cx="-68" cy="17" r="4" fill="#A855F7"/>
+      <text x="-54" y="22" fill="#C084FC" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Zero Hallucinations</text>
+    </g>
+  </g>
+</svg>

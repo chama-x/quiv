@@ -1,109 +1,99 @@
 <p align="center">
   <a href="https://github.com/{{ORG}}/{{REPO}}">
-    <img src="assets/banner-dark.svg#gh-dark-mode-only" alt="{{PROJECT_NAME}} Banner" width="100%">
-    <img src="assets/banner-light.svg#gh-light-mode-only" alt="{{PROJECT_NAME}} Banner" width="100%">
+    <img src="assets/hero.svg" alt="{{PROJECT_NAME}} — {{TAGLINE}}" width="100%">
   </a>
 </p>
 
-# {{PROJECT_NAME}}
-
-> **{{ONE_LINER_TAGLINE}}** — {{QUANTIFIED_BENEFIT}} for {{TARGET_ECOSYSTEM}}.
-
 <p align="center">
   <a href="https://github.com/{{ORG}}/{{REPO}}/stargazers"><img src="https://img.shields.io/github/stars/{{ORG}}/{{REPO}}?style=flat-square&logo=github&color=blue" alt="GitHub Stars"></a>
-  <a href="https://bun.sh"><img src="https://img.shields.io/badge/runtime-bun-black?style=flat-square&logo=bun" alt="Runtime: Bun"></a>
+  <a href="https://bun.sh"><img src="https://img.shields.io/badge/runtime-bun-black?style=flat-square&logo=bun" alt="Bun"></a>
   <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/typescript-5.7+-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"></a>
-  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-22c55e?style=flat-square" alt="License: MIT"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-22c55e?style=flat-square" alt="MIT License"></a>
   <a href="https://discord.gg/{{DISCORD}}"><img src="https://img.shields.io/badge/community-discord-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord"></a>
+  <a href="https://codespaces.new/{{ORG}}/{{REPO}}"><img src="https://img.shields.io/badge/codespaces-instant_sandbox-purple?style=flat-square&logo=github" alt="Open in Codespaces"></a>
 </p>
 
+> **`{{PROJECT_NAME}}`** {{ONE_LINER_DESCRIPTION}}
+
+---
+
 <p align="center">
-  <a href="#-quick-start">Quick Start</a> •
-  <a href="#-key-features">Features</a> •
-  <a href="#-benchmarks">Benchmarks</a> •
-  <a href="#-architecture">Architecture</a> •
-  <a href="#-contributing">Contributing</a>
+  <img src="assets/before-after.svg" alt="Without vs With {{PROJECT_NAME}}" width="100%">
 </p>
 
 ---
 
-## ⚡ The Problem & The 10x Solution
+## ⚡ Quick Start (30 Seconds)
 
-AI coding agents spend **80%+ of their context window** re-reading bloated boilerplates or inventing brittle domain logic from scratch.
-
-`{{PROJECT_NAME}}` solves this by delivering **progressive disclosure architecture primitives**, reducing context bloat by **10–32x** while guaranteeing strict type safety.
-
-<p align="center">
-  <img src="assets/demo.gif" alt="{{PROJECT_NAME}} Demo Recording" width="100%">
-</p>
-
----
-
-## 🚀 Quick Start (30 Seconds)
-
-Evaluate immediately with zero install:
+Test `{{PROJECT_NAME}}` immediately without installing anything:
 
 ```bash
 # 1. Discover available patterns
 bunx {{CLI_NAME}} list
 
-# 2. Search for a specific architecture requirement
-bunx {{CLI_NAME}} find "offline sync"
+# 2. Search semantically
+bunx {{CLI_NAME}} find "{{SEARCH_QUERY}}"
 
-# 3. Pull directly into your project
-bunx {{CLI_NAME}} use features/offline-sync --project my-app
+# 3. Read contract (low tokens)
+bunx {{CLI_NAME}} read {{PATTERN_PATH}} --level overview
+
+# 4. Pull into your project
+bunx {{CLI_NAME}} use {{PATTERN_PATH}} --project my-project
 ```
 
 ---
 
-## 📊 Benchmark & Comparison
+## 🏛️ Architecture & Tiers
 
-| Metric / Capability | Raw File Loading | Monolithic Frameworks | **`{{PROJECT_NAME}}`** |
+<p align="center">
+  <img src="assets/tiers.svg" alt="Architecture Tiers" width="100%">
+</p>
+
+---
+
+## 📊 Benchmarks & Value
+
+| Operation | Without {{PROJECT_NAME}} | With {{PROJECT_NAME}} | Improvement |
 | :--- | :---: | :---: | :---: |
-| **Token Consumption** | 5,000 – 15,000 | 25,000+ | **200 – 800 (32x savings)** |
-| **Discovery Latency** | Manual (Minutes) | Rigid | **< 15ms CLI Indexing** |
-| **Agent Support** | Unstructured | Vendor-locked | **Claude Code, Cursor, Copilot, Antigravity** |
-| **Deterministic Types** | ⚠️ Variable | ❌ Complex | **✅ 100% Strict TypeScript** |
+| **Discovery Overhead** | 1,800 tokens | **140 tokens** | **12.8x cut** |
+| **Context Consumption** | 8,200 tokens | **260 tokens** | **31.5x cut** |
+| **Execution Latency** | Manual / Slow | **< 15ms** | **Instant** |
 
 ---
 
-## 🏛️ Architecture & Capability Tiers
+## 🔍 Deep Dive (Progressive Disclosure)
 
-```
-knowledge/
-├── primitives/     ← Pure utils, hooks, headless UI
-├── domain/         ← Business rules, calculations, schemas
-├── features/       ← Complete reusable features (offline sync, auth)
-├── compositions/   ← Assembly patterns for application types
-└── templates/      ← Full project starter scaffolds
-```
+<details>
+<summary><b>⚡ Complete CLI Reference & Commands</b></summary>
 
----
+<br>
 
-## 🛠️ CLI Reference
-
-| Command | Description | Target Tokens |
+| Command | Purpose | Target Tokens |
 | :--- | :--- | :--- |
-| `{{CLI_NAME}} list` | Browse available capability tiers and patterns | ~200 – 400 |
-| `{{CLI_NAME}} find "<query>"` | Semantic & keyword pattern search | ~300 – 500 |
-| `{{CLI_NAME}} read <path>` | Read with progressive disclosure (`--level overview\|full`) | ~250 – 2,000 |
-| `{{CLI_NAME}} use <path>` | Resolve dependencies & scaffold into current repository | ~200 |
-| `{{CLI_NAME}} status` | Health check & repository inventory overview | ~100 |
+| `{{CLI_NAME}} list` | Browse catalog | 200–400 |
+| `{{CLI_NAME}} find "<query>"` | Semantic search | 300–500 |
+| `{{CLI_NAME}} read <path>` | Progressive disclosure (`--level overview\|full`) | 250–1,500 |
+| `{{CLI_NAME}} use <path>` | Scaffold into repository | ~200 |
+| `{{CLI_NAME}} status` | Inventory health check | ~100 |
 
----
+</details>
 
-## 👥 Contributors
+<details>
+<summary><b>🤖 AI Agent Setup (Claude Code, Cursor, Copilot)</b></summary>
 
-Contributions are welcome! Check out our [Contributing Guide](CONTRIBUTING.md) and browse our [`good-first-issues`](https://github.com/{{ORG}}/{{REPO}}/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).
+<br>
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- ALL-CONTRIBUTORS-LIST:END -->
+```bash
+{{CLI_NAME}} init --agents
+```
+
+</details>
 
 ---
 
 ## 📈 Star History
 
-If you find `{{PROJECT_NAME}}` useful, please consider giving us a ⭐ on GitHub — it helps the project grow and reach more developers!
+If `{{PROJECT_NAME}}` is helpful to you, please consider giving us a ⭐ on GitHub!
 
 <p align="center">
   <a href="https://star-history.com/#{{ORG}}/{{REPO}}&Date">
@@ -115,4 +105,4 @@ If you find `{{PROJECT_NAME}}` useful, please consider giving us a ⭐ on GitHub
 
 ## 📄 License
 
-Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information.
+Distributed under the MIT License. See [`LICENSE`](LICENSE) for details.
