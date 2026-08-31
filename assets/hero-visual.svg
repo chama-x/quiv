@@ -1,35 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" width="800" height="340">
-  <!-- Background -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 360" width="880" height="360">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#09090b;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#18181b;stop-opacity:1" />
     </linearGradient>
   </defs>
-  <rect width="800" height="340" fill="url(#bg)" rx="16"/>
+  
+  <!-- Outer Card -->
+  <rect width="880" height="360" fill="url(#bg)" rx="16"/>
+  <rect x="0.5" y="0.5" width="879" height="359" rx="15.5" stroke="#27272a" stroke-width="1"/>
 
-  <!-- Accent line -->
-  <rect x="64" y="56" width="48" height="4" fill="#22c55e" rx="2"/>
+  <!-- Accent Pill -->
+  <rect x="56" y="44" width="48" height="5" fill="#22c55e" rx="2.5"/>
 
-  <!-- Title -->
-  <text x="64" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="56" font-weight="800" fill="#fafafa" letter-spacing="-2">quiv</text>
-
-  <!-- Subtitle -->
-  <text x="64" y="150" font-family="-apple-system, sans-serif" font-size="17" fill="#a1a1aa" font-weight="500">The Context Engine for AI Agents</text>
+  <!-- Title & Subtitle -->
+  <text x="56" y="104" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="58" font-weight="900" fill="#fafafa" letter-spacing="-2">quiv</text>
+  <text x="56" y="142" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="22" fill="#a1a1aa" font-weight="600">The Context Engine for AI Coding Agents</text>
 
   <!-- Divider -->
-  <line x1="64" y1="182" x2="736" y2="182" stroke="#27272a" stroke-width="1"/>
+  <line x1="56" y1="168" x2="824" y2="168" stroke="#27272a" stroke-width="1.5"/>
 
-  <!-- WITHOUT QUIV — long red bar -->
-  <text x="64" y="212" font-family="SF Mono, Monaco, 'Cascadia Code', monospace" font-size="11" fill="#ef4444" font-weight="600" letter-spacing="1.5">WITHOUT QUIV</text>
-  <rect x="64" y="222" width="672" height="22" fill="#ef4444" rx="4" opacity="0.85"/>
-  <text x="736" y="238" font-family="SF Mono, monospace" font-size="11" fill="#ef4444" text-anchor="end" font-weight="600">8,200 tokens</text>
+  <!-- WITHOUT QUIV BAR -->
+  <g transform="translate(56, 190)">
+    <text x="0" y="16" font-family="SF Mono, Monaco, 'Cascadia Code', monospace" font-size="14" fill="#ef4444" font-weight="800" letter-spacing="2">WITHOUT QUIV</text>
+    <rect x="0" y="26" width="630" height="30" fill="#ef4444" rx="6" opacity="0.9"/>
+    <text x="768" y="48" font-family="SF Mono, Monaco, monospace" font-size="18" fill="#ef4444" text-anchor="end" font-weight="800">8,200 tokens</text>
+  </g>
 
-  <!-- WITH QUIV — tiny green bar -->
-  <text x="64" y="280" font-family="SF Mono, monospace" font-size="11" fill="#22c55e" font-weight="600" letter-spacing="1.5">WITH QUIV</text>
-  <rect x="64" y="290" width="14" height="22" fill="#22c55e" rx="4"/>
-  <text x="88" y="306" font-family="SF Mono, monospace" font-size="11" fill="#22c55e" font-weight="600">140 tokens</text>
-
-  <!-- Reduction stat -->
-  <text x="736" y="306" font-family="-apple-system, sans-serif" font-size="18" fill="#22c55e" text-anchor="end" font-weight="800">−98%</text>
+  <!-- WITH QUIV BAR -->
+  <g transform="translate(56, 268)">
+    <text x="0" y="16" font-family="SF Mono, Monaco, 'Cascadia Code', monospace" font-size="14" fill="#22c55e" font-weight="800" letter-spacing="2">WITH QUIV</text>
+    <rect x="0" y="26" width="22" height="30" fill="#22c55e" rx="6"/>
+    <text x="34" y="48" font-family="SF Mono, Monaco, monospace" font-size="18" fill="#22c55e" font-weight="800">140 tokens</text>
+    <text x="768" y="48" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="34" fill="#22c55e" text-anchor="end" font-weight="900">−98%</text>
+  </g>
 </svg>

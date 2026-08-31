@@ -1,41 +1,41 @@
-<svg width="880" height="210" viewBox="0 0 880 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="880" height="240" viewBox="0 0 880 240" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- Outer Box -->
-  <rect width="880" height="210" rx="16" fill="#090D16"/>
-  <rect x="0.5" y="0.5" width="879" height="209" rx="15.5" stroke="#1E293B" stroke-width="1"/>
+  <rect width="880" height="240" rx="16" fill="#090D16"/>
+  <rect x="0.5" y="0.5" width="879" height="239" rx="15.5" stroke="#1E293B" stroke-width="1"/>
 
   <!-- Left: The Problem (Without quiv) -->
-  <g transform="translate(32, 28)">
-    <rect width="376" height="154" rx="12" fill="#181114" stroke="#7F1D1D" stroke-width="1.2"/>
+  <g transform="translate(28, 24)">
+    <rect width="384" height="192" rx="12" fill="#181114" stroke="#7F1D1D" stroke-width="1.5"/>
     
     <!-- Header Pill -->
-    <rect x="18" y="16" width="128" height="24" rx="12" fill="#450A0A" stroke="#991B1B" stroke-width="1"/>
-    <text x="82" y="32" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle">WITHOUT QUIV</text>
+    <rect x="20" y="18" width="140" height="28" rx="14" fill="#450A0A" stroke="#991B1B" stroke-width="1"/>
+    <text x="90" y="37" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle" letter-spacing="1">WITHOUT QUIV</text>
 
-    <!-- Code & Result lines -->
-    <text x="18" y="64" fill="#E2E8F0" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="500">agent.load(entireRepoDump)</text>
-    <text x="18" y="88" fill="#F87171" font-family="'JetBrains Mono', monospace" font-size="12">✗ 18,400 tokens per turn ($$$)</text>
-    <text x="18" y="110" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12">✗ Context degrades &amp; hallucinates</text>
-    <text x="18" y="132" fill="#F87171" font-family="'JetBrains Mono', monospace" font-size="12">✗ Fragile, duplicated domain logic</text>
+    <!-- Code & Result lines (Large & Legible) -->
+    <text x="20" y="78" fill="#F1F5F9" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="700">agent.load(entireCodebase)</text>
+    <text x="20" y="108" fill="#F87171" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="600">✗ 18,400 tokens per turn ($$$)</text>
+    <text x="20" y="136" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="500">✗ Context degrades &amp; hallucinates</text>
+    <text x="20" y="164" fill="#F87171" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="600">✗ Fragile, duplicated schemas</text>
   </g>
 
   <!-- VS Separator Badge -->
-  <g transform="translate(440, 105)">
-    <circle cx="0" cy="0" r="16" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
-    <text x="0" y="4" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11" font-weight="800" text-anchor="middle">VS</text>
+  <g transform="translate(440, 120)">
+    <circle cx="0" cy="0" r="18" fill="#1E293B" stroke="#475569" stroke-width="2"/>
+    <text x="0" y="5" fill="#CBD5E1" font-family="system-ui, sans-serif" font-size="13" font-weight="900" text-anchor="middle">VS</text>
   </g>
 
   <!-- Right: The Solution (With quiv) -->
-  <g transform="translate(472, 28)">
-    <rect width="376" height="154" rx="12" fill="#0C1B17" stroke="#065F46" stroke-width="1.2"/>
+  <g transform="translate(468, 24)">
+    <rect width="384" height="192" rx="12" fill="#0C1B17" stroke="#065F46" stroke-width="1.5"/>
     
     <!-- Header Pill -->
-    <rect x="18" y="16" width="108" height="24" rx="12" fill="#064E3B" stroke="#047857" stroke-width="1"/>
-    <text x="72" y="32" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle">WITH QUIV</text>
+    <rect x="20" y="18" width="116" height="28" rx="14" fill="#064E3B" stroke="#047857" stroke-width="1"/>
+    <text x="78" y="37" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle" letter-spacing="1">WITH QUIV</text>
 
-    <!-- Code & Result lines -->
-    <text x="18" y="64" fill="#E2E8F0" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="500">quiv read feature --level overview</text>
-    <text x="18" y="88" fill="#34D399" font-family="'JetBrains Mono', monospace" font-size="12">✓ 240 tokens delivered in 12ms</text>
-    <text x="18" y="110" fill="#E2E8F0" font-family="'JetBrains Mono', monospace" font-size="12">✓ Laser-focused context accuracy</text>
-    <text x="18" y="132" fill="#34D399" font-family="'JetBrains Mono', monospace" font-size="12">✓ 5-tier validated architecture</text>
+    <!-- Code & Result lines (Large & Legible) -->
+    <text x="20" y="78" fill="#F1F5F9" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="700">quiv read --level overview</text>
+    <text x="20" y="108" fill="#34D399" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="700">✓ 140 tokens delivered in 12ms</text>
+    <text x="20" y="136" fill="#F1F5F9" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="500">✓ Laser-focused context accuracy</text>
+    <text x="20" y="164" fill="#34D399" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="700">✓ 5-tier validated architecture</text>
   </g>
 </svg>
