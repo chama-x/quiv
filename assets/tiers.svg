@@ -1,67 +1,42 @@
-<svg width="880" height="160" viewBox="0 0 880 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Outer Box -->
-  <rect width="880" height="160" rx="16" fill="#090D16"/>
-  <rect x="0.5" y="0.5" width="879" height="159" rx="15.5" stroke="#1E293B" stroke-width="1"/>
-
-  <!-- Tier 1: Primitives -->
-  <g transform="translate(24, 20)">
-    <rect width="144" height="120" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.2"/>
-    <rect x="14" y="14" width="40" height="22" rx="6" fill="#1E293B"/>
-    <text x="34" y="29" fill="#60A5FA" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="800" text-anchor="middle">T1</text>
-    <text x="14" y="60" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="16" font-weight="800">Primitives</text>
-    <text x="14" y="82" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12" font-weight="500">Atomic utils &amp;</text>
-    <text x="14" y="100" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12" font-weight="500">pure hooks</text>
-  </g>
-
-  <!-- Arrow 1 -->
-  <text x="182" y="88" fill="#475569" font-family="system-ui, sans-serif" font-size="20" font-weight="900">→</text>
-
-  <!-- Tier 2: Domain -->
-  <g transform="translate(196, 20)">
-    <rect width="144" height="120" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.2"/>
-    <rect x="14" y="14" width="40" height="22" rx="6" fill="#1E293B"/>
-    <text x="34" y="29" fill="#34D399" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="800" text-anchor="middle">T2</text>
-    <text x="14" y="60" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="16" font-weight="800">Domain</text>
-    <text x="14" y="82" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12" font-weight="500">Business logic &amp;</text>
-    <text x="14" y="100" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12" font-weight="500">data schemas</text>
-  </g>
-
-  <!-- Arrow 2 -->
-  <text x="354" y="88" fill="#475569" font-family="system-ui, sans-serif" font-size="20" font-weight="900">→</text>
-
-  <!-- Tier 3: Features -->
-  <g transform="translate(368, 20)">
-    <rect width="144" height="120" rx="12" fill="#0F172A" stroke="#3B82F6" stroke-width="2"/>
-    <rect x="14" y="14" width="40" height="22" rx="6" fill="#1E3A8A"/>
-    <text x="34" y="29" fill="#93C5FD" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="800" text-anchor="middle">T3</text>
-    <text x="14" y="60" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="16" font-weight="800">Features</text>
-    <text x="14" y="82" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12" font-weight="500">Complete slices</text>
-    <text x="14" y="100" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12" font-weight="500">(sync, auth)</text>
-  </g>
-
-  <!-- Arrow 3 -->
-  <text x="526" y="88" fill="#475569" font-family="system-ui, sans-serif" font-size="20" font-weight="900">→</text>
-
-  <!-- Tier 4: Compositions -->
-  <g transform="translate(540, 20)">
-    <rect width="144" height="120" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.2"/>
-    <rect x="14" y="14" width="40" height="22" rx="6" fill="#1E293B"/>
-    <text x="34" y="29" fill="#FBBF24" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="800" text-anchor="middle">T4</text>
-    <text x="14" y="60" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="16" font-weight="800">Compositions</text>
-    <text x="14" y="82" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12" font-weight="500">App blueprints &amp;</text>
-    <text x="14" y="100" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12" font-weight="500">UI assembly</text>
-  </g>
-
-  <!-- Arrow 4 -->
-  <text x="698" y="88" fill="#475569" font-family="system-ui, sans-serif" font-size="20" font-weight="900">→</text>
-
-  <!-- Tier 5: Templates -->
-  <g transform="translate(712, 20)">
-    <rect width="144" height="120" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.2"/>
-    <rect x="14" y="14" width="40" height="22" rx="6" fill="#1E293B"/>
-    <text x="34" y="29" fill="#C084FC" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="800" text-anchor="middle">T5</text>
-    <text x="14" y="60" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="16" font-weight="800">Templates</text>
-    <text x="14" y="82" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12" font-weight="500">Full starter</text>
-    <text x="14" y="100" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12" font-weight="500">scaffolds</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="200" viewBox="0 0 1200 200" role="img" aria-labelledby="tt">
+  <title id="tt">quiv knowledge tiers — patterns compose left to right</title>
+  <rect width="1200" height="200" rx="24" fill="#0B0F16"/>
+  <g font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace">
+    <g>
+      <rect x="20"  y="44" width="208" height="112" rx="14" fill="#121A26" stroke="#263042"/>
+      <text x="124" y="72"  text-anchor="middle" font-size="11" letter-spacing="2" fill="#FFC53D">01</text>
+      <text x="124" y="98"  text-anchor="middle" font-size="17" font-weight="700" fill="#F2F5F9">primitives</text>
+      <text x="124" y="124" text-anchor="middle" font-size="12.5" fill="#8FA0B3">hooks · utils</text>
+    </g>
+    <g>
+      <rect x="258" y="44" width="208" height="112" rx="14" fill="#121A26" stroke="#263042"/>
+      <text x="362" y="72"  text-anchor="middle" font-size="11" letter-spacing="2" fill="#FFC53D">02</text>
+      <text x="362" y="98"  text-anchor="middle" font-size="17" font-weight="700" fill="#F2F5F9">domain</text>
+      <text x="362" y="124" text-anchor="middle" font-size="12.5" fill="#8FA0B3">business rules</text>
+    </g>
+    <g>
+      <rect x="496" y="44" width="208" height="112" rx="14" fill="#121A26" stroke="#263042"/>
+      <text x="600" y="72"  text-anchor="middle" font-size="11" letter-spacing="2" fill="#FFC53D">03</text>
+      <text x="600" y="98"  text-anchor="middle" font-size="17" font-weight="700" fill="#F2F5F9">features</text>
+      <text x="600" y="124" text-anchor="middle" font-size="12.5" fill="#8FA0B3">turnkey capabilities</text>
+    </g>
+    <g>
+      <rect x="734" y="44" width="208" height="112" rx="14" fill="#121A26" stroke="#263042"/>
+      <text x="838" y="72"  text-anchor="middle" font-size="11" letter-spacing="2" fill="#FFC53D">04</text>
+      <text x="838" y="98"  text-anchor="middle" font-size="17" font-weight="700" fill="#F2F5F9">compositions</text>
+      <text x="838" y="124" text-anchor="middle" font-size="12.5" fill="#8FA0B3">assembly guidelines</text>
+    </g>
+    <g>
+      <rect x="972" y="44" width="208" height="112" rx="14" fill="#121A26" stroke="#263042"/>
+      <text x="1076" y="72"  text-anchor="middle" font-size="11" letter-spacing="2" fill="#FFC53D">05</text>
+      <text x="1076" y="98"  text-anchor="middle" font-size="17" font-weight="700" fill="#F2F5F9">templates</text>
+      <text x="1076" y="124" text-anchor="middle" font-size="12.5" fill="#8FA0B3">project scaffolds</text>
+    </g>
+    <g stroke="#3A4759" stroke-width="2.5" fill="none">
+      <path d="M232 92 l12 8 -12 8"/>
+      <path d="M470 92 l12 8 -12 8"/>
+      <path d="M708 92 l12 8 -12 8"/>
+      <path d="M946 92 l12 8 -12 8"/>
+    </g>
   </g>
 </svg>

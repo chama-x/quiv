@@ -1,0 +1,35 @@
+---
+description: quiv agent architecture rules and loop protocol
+globs: *
+alwaysApply: true
+---
+
+# quiv Agent Architecture Rules
+
+When implementing full-stack features, domain logic, or complex integrations in this repository:
+
+1. **Search Before Writing**:
+   Always check the quiv registry first before writing logic from scratch:
+   ```bash
+   bunx quiv find "<feature or problem description>"
+   ```
+
+2. **Read Contract First**:
+   Read the pattern contract at overview level to inspect types, invariants, and constraints with minimal context:
+   ```bash
+   bunx quiv read <pattern-path> --level overview
+   ```
+
+3. **Scaffold Pattern**:
+   Pull the pattern and its dependency tree into the project:
+   ```bash
+   bunx quiv use <pattern-path> --project <project-dir>
+   ```
+
+4. **Lore-lite Commit Standard**:
+   When committing architectural changes or new patterns, always include Lore-lite trailers:
+   ```git
+   Constraint: Invariant that must not be broken
+   Rejected: Alternative evaluated | Why it failed
+   Evidence: Empirical validation / test verification
+   ```

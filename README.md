@@ -1,158 +1,199 @@
 <p align="center">
-  <img src="assets/hero-visual.svg" alt="quiv — The Context Engine for AI Agents" width="100%">
+  <img src="assets/hero.svg" alt="quiv wordmark beside a pattern card showing its Constraint, Rejected, and Evidence lines" width="100%">
 </p>
 
 <p align="center">
-  <a href="https://github.com/chama-x/quiv/releases"><img src="https://img.shields.io/badge/version-0.1.0-3b82f6?style=flat-square" alt="Version"></a>
-  <a href="https://github.com/chama-x/quiv/actions"><img src="https://img.shields.io/badge/build-passing-22c55e?style=flat-square" alt="Build Status"></a>
-  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.7+-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"></a>
-  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-22c55e?style=flat-square" alt="MIT License"></a>
+  <a href="https://www.npmjs.com/package/@quiv-knowledge/quiv"><img src="https://img.shields.io/npm/v/@quiv-knowledge/quiv?style=flat-square" alt="npm version"></a>
+  <a href="https://github.com/chama-x/quiv/actions"><img src="https://img.shields.io/badge/build-passing-22c55e?style=flat-square" alt="CI"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="MIT"></a>
 </p>
 
-# quiv
-
-**Agents shouldn't have to read your whole codebase.**
-
-Every feature you paste into a context window costs thousands of tokens of source. The architectural contract the agent actually needed was a few hundred.
-
-`quiv` is a versioned registry of verified feature contracts — the compact form AI coding agents (Claude Code, Cursor, Copilot, Antigravity) ingest instead of raw code dumps.
-
-> 🤖 **Machine Entry Point**: If you are an AI agent, index [`llms.txt`](llms.txt) for API specifications and [`knowledge/INDEX.md`](knowledge/INDEX.md) for the active pattern catalog.
-
----
-
 <p align="center">
-  <img src="assets/before-after.svg" alt="Without quiv vs With quiv" width="100%">
+  <strong>quiv</strong> — a knowledge system for AI coding agents.<br>
+  Every pattern ships with its constraints, rejected alternatives, and evidence:<br>
+  versioned, tiered, and tracked across projects.
 </p>
 
 ---
 
-## Quickstart
+## The problem
 
-Query the registry directly with Bun (no global install required):
+> The why never travels with the code.
+
+When an agent reads your source, it learns what the code does — not why it's shaped that way.
+
+The constraint that dictated the design isn't in the files. The approach somebody
+tried and rejected isn't in the files. The test that set the batch size isn't in
+the files.
+
+So the agent guesses. Sometimes it guesses the thing you already proved wrong.
+
+That knowledge exists — in commit logs, in chat threads, in one person's head.
+It just never travels with the code.
+
+## A pattern
+
+> Code, plus the record of how it earned its shape.
+
+A real one, read at overview level:
 
 ```bash
-bunx quiv find "offline sync"
+$ bunx quiv read features/offline-sync --level overview
 ```
 
 ```text
-✔ Found 3 patterns (140 tokens | 11ms)
-  • features/offline-sync           [PROVEN]    240 tok  — IndexedDB outbox with exponential backoff
-  • primitives/use-offline-entity   [PROVEN]    110 tok  — Optimistic mutation React hook
-  • domain/conflict-resolution      [VALIDATED] 180 tok  — Last-write-wins & vector clock rules
+offline-sync                                  VALIDATED  v1.2.0  312t
+
+Problem     keep entities editable offline, without conflicts
+Solution    durable outbox + backoff retry worker in IndexedDB
+
+Constraint  must not block the UI thread during sync bursts
+Rejected    localStorage queue — 5MB quota fails with attachments
+Evidence    1,000 offline mutations, 100% synced on reconnect
+
+Deps        hooks/useOfflineEntity · utils/conflictResolution
+Files       7
+Deeper      quiv read offline-sync --level full
 ```
 
-Inspect only the type contract and rules without implementation bloat:
+312 tokens, self-reported. The code, the constraint, the failure somebody
+already paid for, the proof it works.
+
+Those three lines — **Constraint · Rejected · Evidence** — are **Lore-lite**,
+quiv's record standard. They're captured when a pattern is contributed, and
+they ride with it through every version.
+
+## Use it
+
+> Discovery to running code in four commands.
+
+Bun required — 30 seconds if you don't have it:
 
 ```bash
-bunx quiv read features/offline-sync --level overview
+curl -fsSL https://bun.sh/install | bash
 ```
 
-Scaffold the pattern into your target project:
+Then, from anywhere:
 
 ```bash
-bunx quiv use features/offline-sync --project my-app
+$ bunx quiv list --tier features
 ```
 
----
+```text
+features (12)                                        204t
 
-## The Pattern Artifact (What Agents Ingest)
-
-`quiv` patterns are not raw source dumps. They are structured contracts designed for minimal token ingestion and zero architectural drift:
-
-```yaml
----
-name: features/offline-sync
-tier: features
-status: PROVEN
-tokens: 240
-dependencies: [primitives/use-offline-entity, domain/conflict-resolution]
----
-
-# Contract: Offline Sync Outbox
-interface OfflineOutbox<T> {
-  queueMutation(entity: string, payload: T): Promise<MutationResult>;
-  syncPending(): Promise<SyncReport>;
-  onConflict(strategy: 'last-write-wins' | 'merge-fn'): void;
-}
-
-# Rules
-- Invariant: Mutations MUST persist in IndexedDB before returning to the UI thread.
-- Invariant: Retries MUST apply jittered exponential backoff (base 500ms, cap 30s).
-- Constraint: Never block the main render loop during bulk outbox flushes.
+offline-sync       VALIDATED     offline edit + conflict resolution
+audit-log          PROVEN        append-only event trail
+image-pipeline     EXPERIMENTAL  srcset + cache headers
+...
 ```
 
----
+```bash
+$ bunx quiv find "conflict resolution"
+```
 
-## The 5 Capability Tiers
+```text
+features/offline-sync         0.92
+utils/conflictResolution      0.71
+hooks/useOfflineEntity        0.44
+```
 
-Knowledge is organized into five progressive abstraction layers:
+```bash
+$ bunx quiv use features/offline-sync --project my-project
+```
+
+```text
+✓ resolved   utils/conflictResolution, hooks/useOfflineEntity
+✓ wrote      7 files → my-project/src/features/offline-sync/
+✓ registry   my-project tracks offline-sync v1.2.0      184t
+```
+
+To keep it: `bun install -g @quiv-knowledge/quiv` — `quiv` and `qv` both work.
+No Bun handy? [Open a Codespace](https://codespaces.new/chama-x/quiv)
+with everything preloaded.
+
+## The knowledge model
+
+> Knowledge composes. Confidence is earned.
 
 <p align="center">
-  <img src="assets/tiers.svg" alt="5 Capability Tiers: Primitives, Domain, Features, Compositions, Templates" width="100%">
+  <img src="assets/tiers.svg" alt="quiv's five tiers, composing left to right: primitives, domain, features, compositions, templates" width="100%">
 </p>
 
-| Tier | Directory | Purpose | Typical Tokens | Example Patterns |
-| :--- | :--- | :--- | :---: | :--- |
-| **T1: Primitives** | `knowledge/primitives/` | Atomic building blocks, pure utilities, hooks | 100–300 | `useOfflineEntity`, `springVocabulary` |
-| **T2: Domain** | `knowledge/domain/` | Business rules, calculations, schemas | 200–500 | Pricing calculators, tax models |
-| **T3: Features** | `knowledge/features/` | Complete encapsulated feature slices | 300–800 | `offline-sync`, `executive-dashboard` |
-| **T4: Compositions** | `knowledge/compositions/` | Blueprints assembling multiple tiers into app shells | 500–1,200 | `apple-native-pwa-shell`, `oled-glass-tokens` |
-| **T5: Templates** | `knowledge/templates/` | Full-stack production starter scaffolds | Full repo | `nextjs-pwa`, `high-star-oss-repo` |
+| Tier | Holds | Example |
+| :--- | :--- | :--- |
+| `primitives` | building blocks | `hooks/useOfflineEntity` |
+| `domain` | business rules | `erp/inventory-allocation` |
+| `features` | turnkey capabilities | `offline-sync` |
+| `compositions` | assembly guidelines | `pwa-apple` |
+| `templates` | project scaffolds | `nextjs-pwa` |
 
----
+`use` pulls the dependency tree with it — a feature arrives standing on the
+hooks and utils it actually needs.
 
-## Verifiable Benchmarks
+Every pattern carries a status it has earned:
 
-Token counts measured with `tiktoken` (`cl100k_base` tokenizer) comparing raw multi-file feature implementations against `quiv` overview contracts:
+`EXPERIMENTAL → VALIDATED → PROVEN`
 
-| Task | Raw Source Loading | `quiv` Contract Read | Difference |
-| :--- | :---: | :---: | :---: |
-| **Search & Discovery** | 1,800 tokens (`grep` scans) | **140 tokens** | **92% less context** |
-| **Architecture Contract Ingestion** | 8,200 tokens (all source files) | **240 tokens** | **97% less context** |
-| **Scaffolding Latency** | Manual copy-paste | **< 14ms (local AST resolution)** | **Instant** |
+Status isn't a version. A version says the code changed. Status says the
+approach survived.
 
----
+A registry remembers which projects consume which patterns, at which versions.
+When a pattern moves, `quiv check` tells you exactly where the drift is.
 
-## Agent Setup (`AGENTS.md` / Cursor Rules)
+## Equip your agents
 
-To configure coding agents in any project to automatically query `quiv` before writing domain logic:
+> Teach the loop before the code.
 
 ```bash
 bunx quiv init --agents
 ```
 
-This generates:
-- **`AGENTS.md`**: Top-level protocol instructions for coding agents.
-- **`.cursor/rules/quiv.mdc`**: Cursor rule directing the agent to run `quiv find` before scaffolding code.
+Writes `AGENTS.md` plus rules for Claude Code, Cursor (`.cursor/rules/quiv.mdc`), and Copilot. From then
+on, the agent's instinct is the loop: `find` the problem → `read` the pattern →
+`use` the code — and write only what no pattern covers.
 
----
+## Command reference
 
-## Lore-lite Commit Standard
+| Command | Does | Output budget |
+| :--- | :--- | :--- |
+| `quiv list` | Patterns by tier, domain, or capability | ≤ 800t |
+| `quiv find "<query>"` | Search by problem description | ~ 500t |
+| `quiv read <pattern>` | Read at `--level overview\|full\|implementation` | 300–3,000t |
+| `quiv use <pattern> --project <dir>` | Resolve deps, write files, update registry | ~ 200t |
+| `quiv check --project <dir>` | Flag outdated pattern versions in use | ~ 300t |
+| `quiv status` | Inventory health check | ~ 100t |
+| `quiv contribute` | Branch, Lore-lite commit, PR | — |
+| `quiv init` | Bootstrap the knowledge repos | — |
 
-**Lore-lite** is a compact Git commit trailer convention that records architectural invariants and rejected alternatives directly in Git history — preserving reasoning across agent sessions:
+Budgets are design targets, not marketing: every command prints its actual
+token count. Run one and check it.
+
+## Contributing
+
+> Rationale is the contribution.
+
+`quiv contribute` opens the branch, formats the commit, and files the PR.
+The standard is three trailers:
 
 ```git
 feat(offline-sync): add durable retry outbox
 
-Implemented exponential backoff retry worker in IndexedDB.
+Durable outbox queue with exponential-backoff retry worker in IndexedDB.
 
-Constraint: Must not block UI thread during heavy sync bursts
-Rejected: LocalStorage queue | 5MB quota insufficient for attachments
-Evidence: Tested 1,000 mutations, 100% synced on reconnect
+Constraint: must not block the UI thread during heavy sync bursts
+Rejected: localStorage queue | 5MB quota was insufficient for attachments
+Evidence: tested with 1,000 offline mutations, 100% synced on reconnect
 ```
 
----
+That's the whole format. It's what stops the next agent from re-litigating a
+settled decision.
 
-## Contributing
+## Community
 
-Contributions, bug reports, and pattern submissions are welcome.
-
-- Read [`CONTRIBUTING.md`](CONTRIBUTING.md) for pattern authoring guidelines and local development workflows.
-- Join discussions and share patterns on our [Discord](https://discord.gg/quiv).
-
----
+[good-first-issues](https://github.com/chama-x/quiv/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) — the on-ramp.
+[Discord](https://discord.gg/quiv) — where patterns get argued into `PROVEN`.
 
 ## License
 
-Distributed under the MIT License. See [`LICENSE`](LICENSE) for details.
+MIT — see [LICENSE](LICENSE).
