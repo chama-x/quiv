@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" width="800" height="340">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#09090b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#18181b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="340" fill="url(#bg)" rx="16"/>
+
+  <!-- Accent line -->
+  <rect x="64" y="56" width="48" height="4" fill="#22c55e" rx="2"/>
+
+  <!-- Title -->
+  <text x="64" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="56" font-weight="800" fill="#fafafa" letter-spacing="-2">quiv</text>
+
+  <!-- Subtitle -->
+  <text x="64" y="150" font-family="-apple-system, sans-serif" font-size="17" fill="#a1a1aa" font-weight="500">The Context Engine for AI Agents</text>
+
+  <!-- Divider -->
+  <line x1="64" y1="182" x2="736" y2="182" stroke="#27272a" stroke-width="1"/>
+
+  <!-- WITHOUT QUIV — long red bar -->
+  <text x="64" y="212" font-family="SF Mono, Monaco, 'Cascadia Code', monospace" font-size="11" fill="#ef4444" font-weight="600" letter-spacing="1.5">WITHOUT QUIV</text>
+  <rect x="64" y="222" width="672" height="22" fill="#ef4444" rx="4" opacity="0.85"/>
+  <text x="736" y="238" font-family="SF Mono, monospace" font-size="11" fill="#ef4444" text-anchor="end" font-weight="600">8,200 tokens</text>
+
+  <!-- WITH QUIV — tiny green bar -->
+  <text x="64" y="280" font-family="SF Mono, monospace" font-size="11" fill="#22c55e" font-weight="600" letter-spacing="1.5">WITH QUIV</text>
+  <rect x="64" y="290" width="14" height="22" fill="#22c55e" rx="4"/>
+  <text x="88" y="306" font-family="SF Mono, monospace" font-size="11" fill="#22c55e" font-weight="600">140 tokens</text>
+
+  <!-- Reduction stat -->
+  <text x="736" y="306" font-family="-apple-system, sans-serif" font-size="18" fill="#22c55e" text-anchor="end" font-weight="800">−98%</text>
+</svg>
