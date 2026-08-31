@@ -157,7 +157,13 @@ Contributions, feature requests, and pattern submissions are welcome!
 
 ## 📈 Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=chama-x/quiv&type=Date&theme=dark)](https://www.star-history.com/?repos=chama-x%2Fquiv&type=date&legend=top-left)
+<a href="https://www.star-history.com/?repos=chama-x%2Fquiv&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=chama-x%2Fquiv&type=date&theme=dark&legend=top-left&sealed_token=3adb31ZQJrJXsJP0K9WpY2v4WlC9qUelFeIhyo1E9XvtmMhYefskZDlLn-vJf7SmYA1r_LZpFQsqZuqVUF5JPQ9qG5ncnpoSdkOVnFeG8TK8b1L5iBQneQ" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=chama-x%2Fquiv&type=date&theme=dark&legend=top-left&sealed_token=3adb31ZQJrJXsJP0K9WpY2v4WlC9qUelFeIhyo1E9XvtmMhYefskZDlLn-vJf7SmYA1r_LZpFQsqZuqVUF5JPQ9qG5ncnpoSdkOVnFeG8TK8b1L5iBQneQ" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=chama-x%2Fquiv&type=date&theme=dark&legend=top-left&sealed_token=3adb31ZQJrJXsJP0K9WpY2v4WlC9qUelFeIhyo1E9XvtmMhYefskZDlLn-vJf7SmYA1r_LZpFQsqZuqVUF5JPQ9qG5ncnpoSdkOVnFeG8TK8b1L5iBQneQ" width="100%" />
+ </picture>
+</a>
 
 ---
 
