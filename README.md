@@ -21,14 +21,14 @@
 You know this loop:
 
 ```text
-You:      "Add offline sync with conflict resolution."
+You:          "Add offline sync with conflict resolution."
 
-Agent:    writes it from scratch.
-          picks localStorage for the queue —
-          the exact thing you proved broken two projects ago.
+Agent:        writes it from scratch.
+              picks localStorage for the queue —
+              the exact thing you proved broken two projects ago.
 
-You:      an hour of debugging. You re-explain the outbox
-          design. It works. You ship.
+You:          an hour of debugging. You re-explain the outbox
+              design. It works. You ship.
 
 Next project: same prompt. Same agent. Same from scratch.
               It picks localStorage again.
@@ -43,19 +43,19 @@ the way it is. Every session resets to zero.
 ## The same prompt, with quiv
 
 ```text
-You:      "Add offline sync with conflict resolution."
+You:          "Add offline sync with conflict resolution."
 
-Agent:    quiv find "offline sync conflict resolution"
-          quiv read features/offline-sync
+Agent:        quiv find "offline sync conflict resolution"
+              quiv read features/offline-sync
 
-          → the design that already worked
-          → the constraint that shaped it
-          → the approach that already failed, and why
+              → the design that already worked
+              → the constraint that shaped it
+              → the approach that already failed, and why
 
-          quiv use features/offline-sync --project my-project
-          → 7 files. Dependencies resolved. Registry updated.
+              quiv use features/offline-sync --project my-project
+              → 7 files. Dependencies resolved. Registry updated.
 
-          writes only what no pattern covers.
+              writes only what no pattern covers.
 ```
 
 Two commands replace the hour. And the architecture is the one you
@@ -228,10 +228,10 @@ Agent:  quiv learn --from ./src/components/Drawer.tsx --tier compositions --name
 | :--- | :--- | :--- |
 | `quiv find "<query>" [--json]` | Deep semantic & code search by problem or keyword | ~ 500t |
 | `quiv read <pattern> [-l overview\|full\|implementation]` | Read with progressive disclosure levels | 300–3,000t |
-| `quiv use <pattern> [-d <dest>] [-P <project>]` | Resolve deps, copy/scaffold files, update registry | ~ 200t |
+| `quiv use <pattern> [-d <dest>] [--flat] [-P <project>]` | Resolve deps, copy/scaffold files, update registry | ~ 200t |
 | `quiv learn [options]` / `extract` | Harvest and distill components from projects into QUIV | ~ 300t |
-| `quiv list [-t <tier>] [-f compact\|table\|json]` | Patterns by tier, domain, or capability | $\le$ 800t |
-| `quiv check -P <project>` | Flag outdated pattern versions in use | ~ 300t |
+| `quiv list [-t <tier>] [-f compact\|table\|json]` | Patterns by tier, domain, or capability | ≤ 800t |
+| `quiv check [-P <project>]` | Flag outdated pattern versions in use | ~ 300t |
 | `quiv status` | Quick health and inventory check | ~ 100t |
 | `quiv contribute [options]` | Branch, Lore-lite commit, and open PR | — |
 | `quiv init [--agents] [--antigravity]` | Bootstrap knowledge base, agent skills & rules | — |
