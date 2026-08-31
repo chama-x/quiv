@@ -134,6 +134,14 @@ Contributions, feature requests, and pattern submissions are welcome!
 
 ---
 
+<!-- 10. STAR HISTORY -->
+
+## 📈 Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos={{ORG}}/{{REPO}}&type=Date&theme=dark)](https://star-history.com/#{{ORG}}/{{REPO}}&Date)
+
+---
+
 ## License
 
 MIT © [{{ORG}}](https://github.com/{{ORG}})

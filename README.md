@@ -153,6 +153,14 @@ Contributions, feature requests, and pattern submissions are welcome!
 
 ---
 
+<!-- 10. STAR HISTORY -->
+
+## 📈 Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=chama-x/quiv&type=Date&theme=dark)](https://www.star-history.com/?repos=chama-x%2Fquiv&type=date&legend=top-left)
+
+---
+
 ## License
 
 MIT © [chama-x](https://github.com/chama-x)
