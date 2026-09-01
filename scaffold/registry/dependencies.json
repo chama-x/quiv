@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "features/offline-sync": [
+      "primitives/hooks/useOfflineEntity@^1.0",
+      "primitives/utils/conflictResolution@^1.0"
+    ],
+    "compositions/pwa-apple": [
+      "features/offline-sync@^1.0"
+    ],
+    "compositions/app-styles/apple-native-pwa": [
+      "compositions/design-tokens@^1.0",
+      "compositions/motion-patterns@^1.0"
+    ]
+  }
+}

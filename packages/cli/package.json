@@ -1,6 +1,7 @@
 {
   "name": "@quiv-knowledge/cli",
   "version": "1.0.0",
+  "description": "High-efficiency Agent Knowledge Kit and architectural pattern engine for AI coding agents",
   "type": "module",
   "bin": {
     "quiv": "./dist/index.js",
@@ -8,10 +9,34 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "scaffold",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "quiv",
+    "ai-agents",
+    "architecture",
+    "patterns",
+    "antigravity",
+    "cursor",
+    "claude-code"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chama-x/quiv.git",
+    "directory": "packages/cli"
+  },
+  "license": "MIT",
   "scripts": {
     "build": "bun build ./src/index.ts --target node --outdir ./dist --banner '#!/usr/bin/env node' && bun x tsc --emitDeclarationOnly --outDir ./dist && chmod +x ./dist/index.js",
     "typecheck": "tsc --noEmit",
-    "test": "bun test"
+    "test": "bun test",
+    "prepack": "bun run build"
   },
   "dependencies": {
     "chalk": "^5.4.1",

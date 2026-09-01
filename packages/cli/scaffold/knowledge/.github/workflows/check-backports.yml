@@ -1,0 +1,22 @@
+name: Check Backports
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  check-backports:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          node scripts/check-backports.js

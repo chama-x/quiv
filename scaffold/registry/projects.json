@@ -1,0 +1,83 @@
+{
+  "projects": {
+    "finance-pwa": {
+      "patterns": [
+        "offline-sync@v2.0",
+        "useOfflineEntity@v1.0"
+      ],
+      "last_sync": "2026-08-15",
+      "repo": "quiv-knowledge/finance-pwa"
+    },
+    "inventory-app": {
+      "patterns": [
+        "offline-sync@v1.0",
+        "conflictResolution@v1.0"
+      ],
+      "last_sync": "2026-08-20",
+      "repo": "quiv-knowledge/inventory-app"
+    },
+    "test-erp": {
+      "patterns": [
+        "offline-sync@v2.0",
+        "useOfflineEntity@v1.0",
+        "conflictResolution@v1.0"
+      ],
+      "last_sync": "2026-08-31",
+      "repo": "quiv-knowledge/test-erp"
+    },
+    "getmelanka": {
+      "patterns": [
+        "motion-patterns@1.0",
+        "apple-hig-springs@1.0",
+        "page-transitions@1.0",
+        "micro-interactions@1.0",
+        "haptics@1.0",
+        "scroll-memory@1.0",
+        "zero-cls-banner@1.0",
+        "intent-install-prompt@1.0",
+        "design-tokens@1.0",
+        "apple-native-pwa@1.0"
+      ],
+      "last_sync": "2026-08-31",
+      "repo": "quiv-knowledge/getmelanka"
+    },
+    "ceylon-rig": {
+      "patterns": [
+        "apple-native-pwa@v1.0",
+        "design-tokens@v1.0",
+        "motion-patterns@v1.0"
+      ],
+      "last_sync": "2026-08-31",
+      "repo": "quiv-knowledge/ceylon-rig"
+    },
+    "e2e-app": {
+      "patterns": [
+        "offline-sync@v2.0",
+        "useOfflineEntity@v1.0",
+        "conflictResolution@v1.0"
+      ],
+      "last_sync": "2026-08-31",
+      "repo": "quiv-knowledge/e2e-app"
+    },
+    "ceylonrig": {
+      "patterns": [
+        "oled-glass-tokens@v1.0",
+        "spring-vocabulary@v1.0",
+        "haptics@v1.0",
+        "tabular-numeral@v1.0",
+        "apple-native-pwa-shell@v1.0",
+        "ios-tab-bar-choreography@v1.0",
+        "intent-install-prompt@v1.0"
+      ],
+      "last_sync": "2026-08-31",
+      "repo": "quiv-knowledge/ceylonrig"
+    },
+    "quiv-monorepo": {
+      "patterns": [
+        "oled-glass-tokens@v1.0"
+      ],
+      "last_sync": "2026-08-31",
+      "repo": "quiv-knowledge/quiv-monorepo"
+    }
+  }
+}

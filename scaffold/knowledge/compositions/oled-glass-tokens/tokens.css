@@ -1,0 +1,42 @@
+:root {
+  /* Surfaces (OLED True Black → Elevated Steps) */
+  --bg: #000000;
+  --s1: #0B0B0C;
+  --s2: #141416;
+  --s3: #1C1C1E;
+  --s4: #242427;
+
+  /* Hairlines & Borders */
+  --hairline: rgba(255, 255, 255, 0.09);
+  --edge: rgba(255, 255, 255, 0.055);
+
+  /* Typography Contrast Levels */
+  --l1: rgba(255, 255, 255, 0.96);
+  --l2: rgba(235, 235, 245, 0.62);
+  --l3: rgba(235, 235, 245, 0.38);
+  --l4: rgba(235, 235, 245, 0.22);
+
+  /* Semantic Highlights */
+  --accent: #F2C14E;
+  --accent-glow: rgba(242, 193, 78, 0.18);
+  --positive: #30D158;
+  --critical: #FF453A;
+  --info: #5E9BD6;
+
+  /* Layout Constants */
+  --g: 20px;
+  --r-row: 12px;
+  --r-card: 20px;
+  --r-sheet: 28px;
+  --tab-h: 54px;
+  --nav-h: 52px;
+
+  /* Viewport Hardware Insets */
+  --sat: max(env(safe-area-inset-top, 0px), 0px);
+  --sab: max(env(safe-area-inset-bottom, 0px), 0px);
+  --sal: max(env(safe-area-inset-left, 0px), 0px);
+  --sar: max(env(safe-area-inset-right, 0px), 0px);
+
+  --nav-total: calc(var(--sat) + var(--nav-h));
+  --content-top: var(--nav-total);
+}

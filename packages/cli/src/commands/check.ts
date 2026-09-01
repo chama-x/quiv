@@ -73,7 +73,7 @@ export const checkCommand = new Command('check')
         chalk.yellow(`\nFound ${outdatedCount} outdated pattern(s). Consider upgrading and testing.`)
       );
     } else {
-      console.log(chalk.green(`\nAll patterns for "${options.project}" are up to date.`));
+      console.log(chalk.green(`\nAll patterns for "${projectName}" are up to date.`));
     }
   });
 

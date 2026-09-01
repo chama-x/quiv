@@ -31,12 +31,20 @@ export const initCommand = new Command('init')
 
     // 1. Copy or generate scaffold directories
     const scaffoldSourceDir = resolveScaffoldDir();
+    const monorepoKnowledgeDir = path.resolve(__dirname, '../../../knowledge');
+    const monorepoRegistryDir = path.resolve(__dirname, '../../../registry');
+    const monorepoMetaDir = path.resolve(__dirname, '../../../meta');
 
     if (scaffoldSourceDir && fs.existsSync(scaffoldSourceDir)) {
       copyDirectorySync(path.join(scaffoldSourceDir, 'knowledge'), knowledgeDir);
       copyDirectorySync(path.join(scaffoldSourceDir, 'registry'), registryDir);
       copyDirectorySync(path.join(scaffoldSourceDir, 'meta'), metaDir);
       console.log(chalk.green(`✓ Scaffolded structure from built-in templates:`));
+    } else if (fs.existsSync(monorepoKnowledgeDir)) {
+      copyDirectorySync(monorepoKnowledgeDir, knowledgeDir);
+      if (fs.existsSync(monorepoRegistryDir)) copyDirectorySync(monorepoRegistryDir, registryDir);
+      if (fs.existsSync(monorepoMetaDir)) copyDirectorySync(monorepoMetaDir, metaDir);
+      console.log(chalk.green(`✓ Scaffolded structure from verified knowledge repository:`));
     } else {
       // Fallback: programmatic creation
       createStructureProgrammatically(knowledgeDir, registryDir, metaDir);
@@ -237,13 +245,19 @@ quiv learn --from ./src/path/to/Component.tsx --tier <tier> --name <slug> -m "fe
 
 
 function resolveScaffoldDir(): string | null {
-  const candidates = [
-    path.resolve(__dirname, '../../scaffold'),
-    path.resolve(__dirname, '../scaffold'),
+  const candidates: string[] = [
     path.resolve(process.cwd(), 'scaffold'),
   ];
+  let curr = __dirname;
+  for (let i = 0; i < 6; i++) {
+    candidates.push(path.join(curr, 'scaffold'));
+    candidates.push(path.join(curr, 'dist', 'scaffold'));
+    const parent = path.dirname(curr);
+    if (parent === curr) break;
+    curr = parent;
+  }
   for (const c of candidates) {
-    if (fs.existsSync(c)) return c;
+    if (fs.existsSync(c) && fs.existsSync(path.join(c, 'knowledge'))) return c;
   }
   return null;
 }

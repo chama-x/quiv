@@ -57,10 +57,18 @@ export function loadConfig(explicitKnowledgePath?: string): QuivConfig {
 
   const org = envOrg || fileConfig.org || DEFAULT_ORG;
 
-  // Resolve knowledge path
-  let knowledgePath = explicitKnowledgePath || envKnowledgePath || fileConfig.knowledgePath;
+  // Resolve knowledge path with existence validation
+  let knowledgePath: string | undefined = explicitKnowledgePath || envKnowledgePath;
+
+  if (!knowledgePath && fileConfig.knowledgePath && isKnowledgeRepo(fileConfig.knowledgePath)) {
+    knowledgePath = fileConfig.knowledgePath;
+  }
+
   if (!knowledgePath) {
-    knowledgePath = autoDetectKnowledgeRepo(process.cwd());
+    const detected = autoDetectKnowledgeRepo(process.cwd());
+    if (detected) {
+      knowledgePath = detected;
+    }
   }
 
   // If still not resolved, check standard global and package-relative locations
@@ -68,8 +76,8 @@ export function loadConfig(explicitKnowledgePath?: string): QuivConfig {
     knowledgePath = resolveGlobalOrPackageKnowledge();
   }
 
-  // Auto-cache to ~/.config/quiv/config.json if resolved and no global config exists
-  if (knowledgePath && !configFile) {
+  // Auto-cache to ~/.config/quiv/config.json if resolved and valid
+  if (knowledgePath && isKnowledgeRepo(knowledgePath) && !configFile) {
     try {
       saveGlobalConfig({
         org,
@@ -81,8 +89,8 @@ export function loadConfig(explicitKnowledgePath?: string): QuivConfig {
   }
 
   // Resolve sibling registry & meta repos if not explicitly set
-  let registryPath = envRegistryPath || fileConfig.registryPath;
-  let metaPath = envMetaPath || fileConfig.metaPath;
+  let registryPath = envRegistryPath || (fileConfig.registryPath && fs.existsSync(fileConfig.registryPath) ? fileConfig.registryPath : undefined);
+  let metaPath = envMetaPath || (fileConfig.metaPath && fs.existsSync(fileConfig.metaPath) ? fileConfig.metaPath : undefined);
 
   if (knowledgePath) {
     const resolvedKPath = path.resolve(knowledgePath);
@@ -133,18 +141,18 @@ export function saveGlobalConfig(config: Partial<QuivConfig>): string {
 export function autoDetectKnowledgeRepo(dir: string): string | undefined {
   let curr = path.resolve(dir);
   while (true) {
-    // Check if current directory is knowledge repo
-    if (isKnowledgeRepo(curr)) {
-      return curr;
-    }
-
-    // Check if there is a 'knowledge' subdirectory
+    // 1. Check if there is a 'knowledge' subdirectory first (e.g. in monorepo root)
     const knowledgeSub = path.join(curr, 'knowledge');
     if (fs.existsSync(knowledgeSub) && isKnowledgeRepo(knowledgeSub)) {
       return knowledgeSub;
     }
 
-    // Check sibling directory 'knowledge'
+    // 2. Check if current directory itself is knowledge repo
+    if (isKnowledgeRepo(curr)) {
+      return curr;
+    }
+
+    // 3. Check sibling directory 'knowledge'
     const siblingKnowledge = path.join(path.dirname(curr), 'knowledge');
     if (fs.existsSync(siblingKnowledge) && isKnowledgeRepo(siblingKnowledge)) {
       return siblingKnowledge;
@@ -165,21 +173,22 @@ export function resolveGlobalOrPackageKnowledge(): string | undefined {
     path.join(os.homedir(), '.local', 'share', 'quiv', 'knowledge'),
   ];
 
-  // Also check package installation directory (for global or linked installs)
+  // Also check package installation directory and parent tree
   try {
     const currentFile = fileURLToPath(import.meta.url);
-    const cliPackageDir = path.resolve(path.dirname(currentFile), '..', '..');
-    const monorepoKnowledge = path.resolve(cliPackageDir, '..', 'knowledge');
-    if (fs.existsSync(monorepoKnowledge) && isKnowledgeRepo(monorepoKnowledge)) {
-      candidates.push(monorepoKnowledge);
-    }
-    const scaffoldKnowledge = path.resolve(cliPackageDir, 'scaffold', 'knowledge');
-    if (fs.existsSync(scaffoldKnowledge) && isKnowledgeRepo(scaffoldKnowledge)) {
-      candidates.push(scaffoldKnowledge);
-    }
-    const rootScaffoldKnowledge = path.resolve(cliPackageDir, '..', 'scaffold', 'knowledge');
-    if (fs.existsSync(rootScaffoldKnowledge) && isKnowledgeRepo(rootScaffoldKnowledge)) {
-      candidates.push(rootScaffoldKnowledge);
+    let curr = path.dirname(currentFile);
+    for (let i = 0; i < 6; i++) {
+      const kCandidate = path.join(curr, 'knowledge');
+      if (fs.existsSync(kCandidate) && isKnowledgeRepo(kCandidate)) {
+        candidates.push(kCandidate);
+      }
+      const sCandidate = path.join(curr, 'scaffold', 'knowledge');
+      if (fs.existsSync(sCandidate) && isKnowledgeRepo(sCandidate)) {
+        candidates.push(sCandidate);
+      }
+      const parent = path.dirname(curr);
+      if (parent === curr) break;
+      curr = parent;
     }
   } catch {
     // ignore
@@ -199,8 +208,6 @@ export function isKnowledgeRepo(dir: string): boolean {
     if (!fs.existsSync(dir) || !fs.statSync(dir).isDirectory()) {
       return false;
     }
-    const hasAgents = fs.existsSync(path.join(dir, 'AGENTS.md'));
-    const hasIndex = fs.existsSync(path.join(dir, 'INDEX.md'));
     const hasPrimitives = fs.existsSync(path.join(dir, 'primitives'));
     const hasFeatures = fs.existsSync(path.join(dir, 'features'));
     const hasCompositions = fs.existsSync(path.join(dir, 'compositions'));
@@ -209,7 +216,7 @@ export function isKnowledgeRepo(dir: string): boolean {
 
     const tierCount = [hasPrimitives, hasFeatures, hasCompositions, hasDomain, hasTemplates].filter(Boolean).length;
 
-    return hasAgents || hasIndex || tierCount >= 1;
+    return tierCount >= 1;
   } catch {
     return false;
   }

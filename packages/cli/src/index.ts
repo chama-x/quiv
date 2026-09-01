@@ -15,7 +15,7 @@ program
   .name('quiv')
   .alias('qv')
   .description('Agent Knowledge Kit (quiv/qv) — High-efficiency reusable architecture for AI coding agents')
-  .version('0.1.0')
+  .version('1.0.0')
   .option('-p, --path <path>', 'Explicit path to knowledge repository')
   .option('-r, --registry <path>', 'Explicit path to registry repository')
   .option('-f, --format <format>', 'Output format (compact, table, json)', 'compact')

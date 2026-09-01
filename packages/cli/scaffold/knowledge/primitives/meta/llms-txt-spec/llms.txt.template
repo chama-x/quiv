@@ -1,0 +1,19 @@
+# {{PROJECT_NAME}}
+
+> {{ONE_LINER_TAGLINE}}
+
+## Core Capabilities
+- {{CAPABILITY_1}}
+- {{CAPABILITY_2}}
+- {{CAPABILITY_3}}
+
+## Key Documentation
+- [CLI Reference]({{CLI_DOCS_URL}})
+- [Knowledge Index]({{INDEX_URL}})
+- [Full Context Bundle]({{LLMS_FULL_URL}})
+
+## Quick CLI Usage
+```bash
+bunx {{CLI_NAME}} list
+bunx {{CLI_NAME}} find "{{QUERY_EXAMPLE}}"
+```

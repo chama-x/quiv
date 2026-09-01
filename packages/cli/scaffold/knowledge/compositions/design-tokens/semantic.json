@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "design-token-semantic",
+  "version": "1.0.0",
+  "aliases": {
+    "--color-background": "{color.neutral.50}",
+    "--color-foreground": "{color.neutral.950}",
+    "--color-surface": "{color.neutral.100}",
+    "--color-surface-subtle": "{color.neutral.50}",
+    "--color-surface-hover": "{color.neutral.200}",
+    "--color-primary": "{color.brand.500}",
+    "--color-primary-deep": "{color.brand.600}",
+    "--color-primary-foreground": "oklch(0.99 0.005 155)",
+    "--color-primary-tint": "{color.brand.100}",
+    "--color-accent": "{color.accent.500}",
+    "--color-accent-tint": "{color.accent.50}",
+    "--color-border": "{color.neutral.200}",
+    "--color-border-subtle": "{color.neutral.100}",
+    "--color-success": "{color.semantic.success}",
+    "--color-warning": "{color.semantic.warning}",
+    "--color-danger": "{color.semantic.danger}",
+    "--color-info": "{color.semantic.info}",
+    "--radius-button": "{radius.md}",
+    "--radius-card": "{radius.lg}",
+    "--radius-sheet": "{radius.2xl}",
+    "--radius-chip": "{radius.sm}",
+    "--radius-badge": "{radius.pill}",
+    "--motion-push": "{duration.slow}",
+    "--motion-tap": "{duration.fast}",
+    "--motion-easing": "{easing.apple}"
+  }
+}

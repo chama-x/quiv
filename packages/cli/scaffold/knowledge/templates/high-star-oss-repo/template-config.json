@@ -1,0 +1,16 @@
+{
+  "templateName": "high-star-oss-repo",
+  "version": "1.0.0",
+  "targetRuntime": "bun",
+  "defaultLicense": "MIT",
+  "tier": "templates",
+  "features": [
+    "7-second-readme",
+    "dark-mode-svg",
+    "llms-txt-index",
+    "issue-forms-yaml",
+    "pr-template-lore",
+    "all-contributors",
+    "codespaces-devcontainer"
+  ]
+}

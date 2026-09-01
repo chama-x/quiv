@@ -10,9 +10,13 @@
 ## Installation & Quickstart
 
 ```bash
-# Global installation (Bun or npm)
+# 1. From local source / repository:
+bun run build
+cd packages/cli && npm link
+
+# 2. Or from npm registry (when published):
 bun install -g @quiv-knowledge/cli
-# Or npm
+# Or npm:
 npm install -g @quiv-knowledge/cli
 ```
 

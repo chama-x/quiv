@@ -1,0 +1,6 @@
+<svg width="1200" height="340" viewBox="0 0 1200 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="340" rx="16" fill="#0D1117"/>
+  <rect x="0.5" y="0.5" width="1199" height="339" rx="15.5" stroke="#30363D"/>
+  <text x="80" y="100" fill="#F0F6FC" font-family="sans-serif" font-size="36" font-weight="bold">Project Title</text>
+  <text x="80" y="150" fill="#8B949E" font-family="sans-serif" font-size="18">High-performance developer tooling</text>
+</svg>

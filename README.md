@@ -116,8 +116,12 @@ curl -fsSL https://bun.sh/install | bash
 Install globally for instant `quiv` and `qv` commands anywhere:
 
 ```bash
+# If cloned / developing locally:
+bun run build && (cd packages/cli && npm link)
+
+# Or once published to npm:
 bun install -g @quiv-knowledge/cli
-# Or run on-demand with bunx / npx without installing:
+# Or run on-demand with bunx / npx:
 # bunx @quiv-knowledge/cli init --agents --antigravity
 ```
 
