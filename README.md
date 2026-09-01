@@ -113,10 +113,18 @@ Bun required — 30 seconds if you don't have it:
 curl -fsSL https://bun.sh/install | bash
 ```
 
+Install globally for instant `quiv` and `qv` commands anywhere:
+
+```bash
+bun install -g @quiv-knowledge/cli
+# Or run on-demand with bunx / npx without installing:
+# bunx @quiv-knowledge/cli init --agents --antigravity
+```
+
 Then, from anywhere (zero-config, auto-discovers global or local knowledge):
 
 ```bash
-$ bunx quiv list --tier features
+$ quiv list --tier features
 ```
 
 ```text
@@ -130,7 +138,7 @@ Total patterns: 32
 ```
 
 ```bash
-$ bunx quiv find "cinema storefront oled tokens"
+$ quiv find "cinema storefront oled tokens"
 ```
 
 ```text
@@ -149,7 +157,7 @@ Found 22 matching pattern(s):
 ```
 
 ```bash
-$ bunx quiv use compositions/app-styles/apple-native-pwa --dest ./src --project my-project
+$ quiv use compositions/app-styles/apple-native-pwa --dest ./src --project my-project
 ```
 
 ```text
@@ -163,7 +171,6 @@ Dependencies (2):
 ✓ Recorded in registry for project: "my-project"
 ```
 
-To keep it: `bun install -g @quiv-knowledge/cli` — `quiv` and `qv` both work globally.  
 No Bun handy? [Open a Codespace](https://codespaces.new/chama-x/quiv) with everything preloaded.
 
 ---
@@ -197,7 +204,7 @@ A registry tracks which projects consume which patterns, at which versions. When
 ## Equip your agents & Antigravity (10-Second Setup)
 
 ```bash
-bunx quiv init --agents --antigravity
+bunx @quiv-knowledge/cli init --agents --antigravity
 ```
 
 Installs:
