@@ -173,6 +173,14 @@ export function resolveGlobalOrPackageKnowledge(): string | undefined {
     if (fs.existsSync(monorepoKnowledge) && isKnowledgeRepo(monorepoKnowledge)) {
       candidates.push(monorepoKnowledge);
     }
+    const scaffoldKnowledge = path.resolve(cliPackageDir, 'scaffold', 'knowledge');
+    if (fs.existsSync(scaffoldKnowledge) && isKnowledgeRepo(scaffoldKnowledge)) {
+      candidates.push(scaffoldKnowledge);
+    }
+    const rootScaffoldKnowledge = path.resolve(cliPackageDir, '..', 'scaffold', 'knowledge');
+    if (fs.existsSync(rootScaffoldKnowledge) && isKnowledgeRepo(rootScaffoldKnowledge)) {
+      candidates.push(rootScaffoldKnowledge);
+    }
   } catch {
     // ignore
   }
