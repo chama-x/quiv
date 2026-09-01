@@ -25,8 +25,8 @@
       },
     },
     "packages/cli": {
-      "name": "@quiv-knowledge/cli",
-      "version": "1.0.0",
+      "name": "@chamax/quiv",
+      "version": "1.0.1",
       "bin": {
         "quiv": "./dist/index.js",
         "qv": "./dist/index.js",
@@ -46,6 +46,8 @@
     },
   },
   "packages": {
+    "@chamax/quiv": ["@chamax/quiv@workspace:packages/cli"],
+
     "@esbuild/aix-ppc64": ["@esbuild/aix-ppc64@0.27.7", "", { "os": "aix", "cpu": "ppc64" }, "sha512-EKX3Qwmhz1eMdEJokhALr0YiD0lhQNwDqkPYyPhiSwKrh7/4KRjQc04sZ8db+5DVVnZ1LmbNDI1uAMPEUBnQPg=="],
 
     "@esbuild/android-arm": ["@esbuild/android-arm@0.27.7", "", { "os": "android", "cpu": "arm" }, "sha512-jbPXvB4Yj2yBV7HUfE2KHe4GJX51QplCN1pGbYjvsyCZbQmies29EoJbkEc+vYuU5o45AfQn37vZlyXy4YJ8RQ=="],
@@ -111,8 +113,6 @@
     "@kwsites/promise-deferred": ["@kwsites/promise-deferred@1.1.1", "", {}, "sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw=="],
 
     "@napi-rs/lzma-linux-x64-gnu": ["@napi-rs/lzma-linux-x64-gnu@1.5.1", "", { "os": "linux", "cpu": "x64" }, "sha512-oTXEIha4SsuXdTA4Iyskj0kpdx2yVXdhd75c2v3xGrHFfVMsbhTPZU/nMPL4sWKo4pBHm3aucLaqGlF696dTyQ=="],
-
-    "@quiv-knowledge/cli": ["@quiv-knowledge/cli@workspace:packages/cli"],
 
     "@quiv-knowledge/patterns": ["@quiv-knowledge/patterns@workspace:knowledge"],
 
