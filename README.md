@@ -120,9 +120,9 @@ Install globally for instant `quiv` and `qv` commands anywhere:
 bun run build && (cd packages/cli && npm link)
 
 # Or once published to npm:
-bun install -g @quiv-knowledge/cli
+bun install -g @chamax/quiv
 # Or run on-demand with bunx / npx:
-# bunx @quiv-knowledge/cli init --agents --antigravity
+# bunx @chamax/quiv init --agents --antigravity
 ```
 
 Then, from anywhere (zero-config, auto-discovers global or local knowledge):
@@ -208,7 +208,7 @@ A registry tracks which projects consume which patterns, at which versions. When
 ## Equip your agents & Antigravity (10-Second Setup)
 
 ```bash
-bunx @quiv-knowledge/cli init --agents --antigravity
+bunx @chamax/quiv init --agents --antigravity
 ```
 
 Installs:

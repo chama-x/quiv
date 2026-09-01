@@ -1,8 +1,8 @@
-# @quiv-knowledge/cli (`quiv` / `qv`)
+# @chamax/quiv (`quiv` / `qv`)
 
 > Agent Knowledge Kit (quiv/qv) — High-efficiency reusable architecture for AI coding agents.
 
-[![Version](https://img.shields.io/npm/v/@quiv-knowledge/cli?style=flat-square)](https://www.npmjs.com/package/@quiv-knowledge/cli)
+[![Version](https://img.shields.io/npm/v/@chamax/quiv?style=flat-square)](https://www.npmjs.com/package/@chamax/quiv)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](https://github.com/chama-x/quiv)
 
 ---
@@ -15,9 +15,9 @@ bun run build
 cd packages/cli && npm link
 
 # 2. Or from npm registry (when published):
-bun install -g @quiv-knowledge/cli
+bun install -g @chamax/quiv
 # Or npm:
-npm install -g @quiv-knowledge/cli
+npm install -g @chamax/quiv
 ```
 
 ### 10-Second Setup for AI Agents & Antigravity

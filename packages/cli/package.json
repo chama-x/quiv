@@ -1,6 +1,6 @@
 {
-  "name": "@quiv-knowledge/cli",
-  "version": "1.0.0",
+  "name": "@chamax/quiv",
+  "version": "1.0.1",
   "description": "High-efficiency Agent Knowledge Kit and architectural pattern engine for AI coding agents",
   "type": "module",
   "bin": {
